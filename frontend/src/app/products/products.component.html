@@ -1,0 +1,109 @@
+<!-- Header Toolbar -->
+
+<header></header>
+
+
+<!-- Central Containt -->
+<div class="content-div">
+
+  <!-- SideBar List -->
+  <div>
+
+    <sidenavbar></sidenavbar>
+
+  </div>
+
+  <!-- Main Grid -->
+
+  <div class='content-card'>
+
+
+
+
+    <div class="content-div">
+
+
+      <h5 style="text-align: left">Product List
+
+        <div *ngIf="addButton" style="float: right; position: unset; margin-top: 0%; 
+                  margin-right: 1%; ">
+          <button mat-raised-button (click)="onClickAddProduct()" matTooltip=" Want to add a new Product ? "
+            title="right" aria-label="Button that displays a tooltip that can be programatically disabled">
+            <mat-icon>add</mat-icon>
+            Add Product
+          </button>
+
+        </div>
+
+      </h5>
+      <hr class="hr-silver">
+
+
+
+
+
+      <!-- Mat Table for retailer list  -->
+
+
+      <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="products"
+        style="width: 96%; margin: 2%; margin-bottom: 2%" class="mat-elevation-z8" matSort>
+
+
+        <ng-container matColumnDef="productId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="productEmail">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> email</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="productPhone">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Telephone </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.telephone}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="productStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> nom </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nom}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="productCost">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> le role </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.role_systm}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Edit Product </mat-header-cell>
+          <mat-cell (click)=editProduct(element) style="cursor: pointer" title="Edit Product Details"
+            *matCellDef="let element">
+            <a>
+              <i class="material-icons">
+                border_color
+              </i>
+            </a>
+            <!-- &nbsp; Edit Product -->
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </table>
+      <mat-paginator #paginator [pageIndex]="0" [pageSize]="10" [pageSizeOptions]=[5,10] showFirstLastButtons="true">
+
+      </mat-paginator>
+
+
+      <div style="margin-top: 2%"> &nbsp; </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>

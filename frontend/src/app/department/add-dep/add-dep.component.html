@@ -1,0 +1,100 @@
+<!-- Header Toolbar -->
+
+<header></header>
+
+<!-- Central Containt -->
+<div class="content-div">
+
+    <!-- SideBar List -->
+    <sidenavbar></sidenavbar>
+
+    <!-- Main Grid -->
+
+    <div class='content-card'>
+
+        {{deidine}}
+        <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
+        <hr class="hr-silver">
+
+
+        <div style="width: 80%; margin-left: 10% ;">
+
+
+            <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" style="margin-top: 2%">
+
+                
+                <div class="form-group">
+
+                    <label> depName</label>
+                    <input type="text" [class.is-invalid]="addProductForm.get('depName').invalid
+                                        && addProductForm.get('depName').touched"
+                        [class.is-valid]="addProductForm.get('depName').valid" formControlName="depName" class="form-control">
+
+                    <small class="text-danger" [class.d-none]="addProductForm.get('depName').valid
+                                              || addProductForm.get('depName').untouched">
+                        depName </small>
+
+                </div>
+                <div class="form-group">
+
+                    <label>Product depUrl</label>
+                    <input type="text" [class.is-invalid]="addProductForm.get('depUrl').invalid
+                                        && addProductForm.get('depUrl').touched"
+                        [class.is-valid]="addProductForm.get('depUrl').valid" formControlName="depUrl"
+                        class="form-control">
+
+                    <small class="text-danger" [class.d-none]="addProductForm.get('depUrl').valid
+                                              || addProductForm.get('depUrl').untouched">
+                        depUrl name </small>
+
+                </div>
+                <div class="form-group">
+
+                    <label> depTitre</label>
+                    <input type="text" [class.is-invalid]="addProductForm.get('depTitre').invalid
+                                        && addProductForm.get('depTitre').touched"
+                        [class.is-valid]="addProductForm.get('depTitre').valid" formControlName="depTitre"
+                        class="form-control">
+
+                    <small class="text-danger" [class.d-none]="addProductForm.get('depTitre').valid
+                                              || addProductForm.get('depTitre').untouched">
+                        depTitre </small>
+
+                </div>
+<!-- 
+                <div class="form-group">
+
+                    <label>id departemnt</label>
+                    <input type="number" [class.is-invalid]="addProductForm.get('dep_id').invalid
+                                            && addProductForm.get('dep_id').touched"
+                        [class.is-valid]="addProductForm.get('dep_id').valid" formControlName="dep_id"
+                        class="form-control">
+
+                    <small class="text-danger" [class.d-none]="addProductForm.get('dep_id').valid
+                                                  || addProductForm.get('dep_id').untouched">
+                        Please Enter dep_id </small>
+
+                </div> -->
+<!-- <button [disabled]="addProductForm.get('dep_id').invalid> -->
+                                                   
+                 <button mat-raised-button type="submit" title="Add in Product List" 
+                    style="width:30%; left:10%; margin-right: 20%; ">
+                    <mat-icon>add</mat-icon>
+                    ADD
+                </button>
+
+                <button mat-raised-button type="submit" title="Cancel" (click)="onClickCancel()"
+                    style="width:30%; left:10%; ">
+                    <mat-icon>cancel</mat-icon>
+                    Cancel
+                </button>
+
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+</div>

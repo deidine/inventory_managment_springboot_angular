@@ -1,0 +1,222 @@
+.header-toolbar{
+    top: 0%;
+    width: 100%; 
+    left: 0%; 
+    position: absolute;
+  }
+  
+  .custom-sidebar{
+    position: fixed;
+  }
+  
+  .toolbar-image{
+    padding-top: .1%;
+    width: 30%;
+  }
+  
+  .toolbar-row-spacer{
+    flex: 1 1 auto;
+  }
+  
+  .toolbar-row-icon{padding: 0 30px 0 20px ;
+  }
+  
+  .card-div{
+    margin-top: 6.5%;
+  }
+  
+  .content-div{
+    margin-top: 3.5%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    align-items: center;
+  }
+  
+  .my-profile-div{
+    margin-top: 6%;
+    width: 100%;
+  }
+  
+  button
+  {
+      background: rgb(183, 226, 243)
+  }
+  
+  .side-card{
+    width: 15%;
+    padding: 1%;
+    height: 100%;
+    position: absolute;
+  }
+  
+  .content-card{
+    width: 80%;
+    right: 2%;
+  
+    margin-left: 2%;
+    height: 100%;
+    min-height: 85%;
+    position: absolute;
+  }
+  
+  .footer-toolbar{
+    text-align: center;
+    bottom: 0%;
+    width: 100%;
+    position: fixed;
+  }
+  
+  .footer-centralizer{
+    padding-left: 42%;
+  }
+  
+  .footer-row-icon{
+    padding: 0 20px 0 20px ;
+  }
+  
+  .side-content-icons{
+    padding: 0 20px 0 20px ;
+  }
+  
+  mat-list-item{
+  cursor: pointer; 
+  }
+  
+  .hr-silver{
+      border: solid thin silver;
+  }
+  
+  .side-button{
+    width: 100%;
+    height: 50px;
+  }
+  
+  .content-ripple-container {
+    position: relative;
+  
+    cursor: pointer;
+    text-align: center;
+    
+    margin: 20px;
+    border-radius: 10px; 
+    width: 250px;
+    height: 210px;
+    line-height: 200px;
+  }
+  
+  .content-tab-icon {
+    margin-right: 8px;
+  }
+  
+    md-tab-group {
+            height: 100%;
+      }
+    
+  
+  .main-card {
+    border: solid thin silver ;
+    border-radius: 10px;
+    width: 80%;
+    top: 6%;
+    height: 50%;
+    left: 8%;
+  }
+  
+  .topbar{
+    width: 100%;
+    height: 7.9%;
+    background-color: burlywood;
+    position: fixed;
+    top:0px;
+    margin-left: 0%;
+    left: 0%;
+  
+  }
+  
+  .topbar h1{
+    width: 60%;
+    padding-left: 60px;
+    float: left;
+    margin-top: 18px;
+    position: relative;
+    font-family: verdana;
+    font-size: 40px;
+    color: white;
+  
+  }
+  
+  .logout {
+    background-color: transparent;
+    float: right;
+    margin-top: 17px;
+    margin-right: 30px;
+    padding: 15px;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 10px 24px;
+    border-block-color: transparent;
+  }
+  
+  .sidebar{
+    float:left;
+    background-color: rgb(255, 255, 255);
+    width: 13%;
+    height: 100%;
+    margin-top: 0%;
+    left: 0%;   
+    margin-left: 0%;
+    padding-left: 0%;
+    position: fixed;
+    top: 7.9%;
+    
+  
+  }
+  .sidebar button {
+    display: block;
+    background-color: inherit;
+    color: rgb(19, 18, 18);
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+    border-bottom: #ddd solid 1px;
+  }
+  .sidebar button:focus {
+      outline:0 !important;
+      box-shadow: none;
+    }
+  .sidebar button:hover {
+    background-color: burlywood;
+    border: none;
+  }
+  .sidebar button.active {
+    background-color: burlywood;
+    border: none;
+    outline: none !important;
+  }
+  
+  
+  .container{
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 100%;
+      margin-top: 0%;
+      margin-left: 12.57%;
+      position: fixed;
+      top: 7.9%;
+      border-left: black solid 1px;
+  
+  }     
+  input::-moz-focus-inner { 
+    border: 0; 
+  }         
+  
+  h6{
+    font-size: 180%;
+  
+  }

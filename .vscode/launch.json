@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SpringbootBackendApplication",
+            "request": "launch",
+            "mainClass": "net.javaguides.springboot.SpringbootBackendApplication",
+            "projectName": "springboot-backend"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootBackendApplication<CollegeManagementSystem>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "net.javaguides.springboot.SpringbootBackendApplication",
+            "projectName": "CollegeManagementSystem",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

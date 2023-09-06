@@ -1,0 +1,115 @@
+<!-- Header Toolbar -->
+
+<header></header>
+
+
+<!-- Central Containt -->
+<div class="content-div">
+
+  <!-- SideBar List -->
+  <div>
+
+    <sidenavbar></sidenavbar>
+
+  </div>
+
+  <!-- Main Grid -->
+
+  <div class='content-card'>
+
+
+
+
+    <div class="content-div">
+
+
+      <h5 style="text-align: left">department List
+
+        <div *ngIf="addButton" style="float: right; position: unset; margin-top: 0%; 
+                  margin-right: 1%; ">
+          <button mat-raised-button (click)="onClickAddDepartment()" matTooltip=" Want to add a new department ? "
+            title="right" aria-label="Button that displays a tooltip that can be programatically disabled">
+            <mat-icon>add</mat-icon>
+            Add department
+          </button>
+
+        </div>
+
+      </h5>
+      <hr class="hr-silver">
+
+
+
+      <!-- Mat Table for retailer list  -->
+
+      <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="departments"
+        style="width: 96%; margin: 2%; margin-bottom: 2%" class="mat-elevation-z8" matSort>
+
+
+        <ng-container matColumnDef="departmentId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.departmentId}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="departmentUrl">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> department Url </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.departmentUrl}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="departmentTitre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> department Titre </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.departmentTitre}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="departmentName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> department Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.departmentName}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Edit department </mat-header-cell>
+          <mat-cell (click)=editdepartment(element) style="cursor: pointer" title="Edit department Details"
+            *matCellDef="let element">
+            <a>
+              <i class="material-icons">
+                border_color
+              </i>
+            </a>
+            <!-- &nbsp; delete department -->
+          </mat-cell>
+
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> delete department </mat-header-cell>
+          <mat-cell (click)=deletedepartment(element) style="cursor: pointer" title="delete department  "
+            *matCellDef="let element">
+            <a>
+              <i class="material-icons">
+                border_color
+              </i>
+            </a>
+            <!-- &nbsp; delete department -->
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </table>
+      <mat-paginator #paginator [pageIndex]="0" [pageSize]="10" [pageSizeOptions]=[5,10] showFirstLastButtons="true">
+
+      </mat-paginator>
+
+
+      <div style="margin-top: 2%"> &nbsp; </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>

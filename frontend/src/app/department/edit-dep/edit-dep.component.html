@@ -1,0 +1,78 @@
+<!-- Header Toolbar -->
+
+<header></header>
+
+<!-- Central Containt -->
+<div class="content-div">
+
+    <!-- SideBar List -->
+    <sidenavbar></sidenavbar>
+
+    <!-- Main Grid -->
+
+    <div class='content-card'>
+        
+        <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
+        <hr class="hr-silver">
+
+
+        <div style="width: 80%; margin-left: 10% ;">
+
+
+            <form name="editDepartmentForm" #editDepartmentForm="ngForm" (ngSubmit)="onSubmit()" style="margin-top: 2%">
+
+
+                <div class="form-group">
+
+                    <label> departmentName</label>
+                    <input type="text" ngModel #departmentName="ngModel" name="departmentName" id="departmentName" [(ngModel)]="department.departmentName"
+                        class="form-control">
+
+                </div>
+                <div class="form-group">
+
+                    <label>Product departmentUrl</label>
+                    <input type="text" ngModel #departmentUrl="ngModel" name="departmentUrl" id="departmentUrl" [(ngModel)]="department.departmentUrl"
+                        class="form-control">
+
+                </div>
+                <div class="form-group">
+
+                    <label> departmentTitre</label>
+                    <input type="text" name="departmentTitre" ngModel #departmentTitre="ngModel" [(ngModel)]="department.departmentTitre"
+                        class="form-control">
+
+                </div>
+                <!-- 
+                <div class="form-group">
+
+                    <label>id departemnt</label>
+                    <input type="number" 
+                                            
+                         [(ngModel)]="department.dep_id"
+                        class="form-control">
+  
+                </div> -->
+                <!-- <button [disabled]="addProductForm.get('dep_id').invalid> -->
+
+                <button mat-raised-button type="submit" title="Add in Product List"
+                    style="width:30%; left:10%; margin-right: 20%; ">
+                    <mat-icon>update</mat-icon>
+                    Update
+                </button>
+
+                <button mat-raised-button type="submit" title="Cancel" (click)="onClickCancel()"
+                    style="width:30%; left:10%; ">
+                    <mat-icon>cancel</mat-icon>
+                    Cancel
+                </button>
+
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+</div>

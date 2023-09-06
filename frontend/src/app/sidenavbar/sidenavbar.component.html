@@ -1,0 +1,208 @@
+    <!-- SideBar List -->
+    <div>
+        
+        <div class="side-card" *ngIf="adminSidepanel">
+  
+          <br>
+          <br>
+          <br>
+          <br>
+                     <button mat-raised-button 
+                                class="btn btn-secondary side-button"
+                                title="List all Distributors"
+                                routerLink="/distributors-list"
+                                aria-label="Button that displays a tooltip that can be programatically disabled"
+                                style="margin-bottom:10%;">
+                                <mat-icon >people</mat-icon>                  
+                                Distributers    
+                         </button>
+
+                         <mat-divider></mat-divider> 
+
+                         <button mat-raised-button 
+                                class="btn btn-secondary side-button"
+                                title="Show all Products"
+                                routerLink="/products"                                 
+                                aria-label="Button that displays a tooltip that can be programatically disabled"
+                                style="margin-bottom:10%;">
+                                <mat-icon >shopping_basket</mat-icon>                  
+                                Products   
+                         </button>
+
+                         
+                    <mat-divider></mat-divider>
+                   
+
+                    <button mat-raised-button 
+                                class="btn btn-secondary side-button"
+                                title="All Requests"
+                                routerLink="/requests"                                   
+                                aria-label="Button that displays a tooltip that can be programatically disabled"
+                                style="margin-bottom:10%;">
+                                <mat-icon >priority_high</mat-icon>                  
+                                Requests    
+                         </button>
+
+                         <mat-divider></mat-divider> 
+  
+
+                         <button mat-raised-button 
+                                class="btn btn-secondary side-button"
+                                title="List all Transactions"
+                                TooltipPosition="right"
+                                routerLink='/transactions'                                    
+                                aria-label="Button that displays a tooltip that can be programatically disabled"
+                                style="margin-bottom:10%;">
+                                <mat-icon >watch_later</mat-icon>                  
+                                Transactions    
+                         </button>
+
+                         <mat-divider></mat-divider> 
+  
+  
+                    <mat-divider></mat-divider> 
+  
+
+                    
+            
+  
+        </div>
+    
+        <div class="side-card" *ngIf="distributorSidePanel">
+  
+              <br>
+              <br>
+              <br>
+              <br>
+      
+          <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="List all Retailers"
+                              routerLink="/retailers-list"
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >people</mat-icon>                  
+                              Retailers    
+                       </button>
+
+                       <mat-divider></mat-divider>    
+              
+
+                       <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="Open My Inventory"
+                              routerLink="/inventory"                                   
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >shopping_basket</mat-icon>                  
+                              My Inventory    
+                       </button>
+
+                       
+                  <mat-divider></mat-divider>
+                 
+
+                  <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="All Requests"
+                              routerLink="/requests"                                  
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >priority_high</mat-icon>                  
+                              Requests    
+                       </button>
+
+                       <mat-divider></mat-divider> 
+  
+        
+                 
+
+                       <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="List all Transactions"
+                              TooltipPosition="right"
+                              routerLink="/transactions"                                    
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >watch_later</mat-icon>                  
+                              Transactions    
+                       </button>
+
+                       <mat-divider></mat-divider> 
+  
+                  <mat-divider></mat-divider> 
+  
+
+                  
+          
+  
+        </div>
+  
+        <div class="side-card" *ngIf="retailerSidePanel">
+  
+              <br>
+              <br>
+              <br>
+              <br>
+         
+          <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="Open My Inventory"
+                              routerLink="/inventory"                                   
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >shopping_basket</mat-icon>                  
+                              My Inventory    
+                       </button>
+ 
+                       
+                  <mat-divider></mat-divider>
+ 
+        
+                 
+
+                  <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="List all Transactions"
+                              TooltipPosition="right"
+                              routerLink="/transactions"                                    
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >watch_later</mat-icon>                  
+                              Transactions    
+                       </button>
+
+                       <mat-divider></mat-divider> 
+<!--   
+                       <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="Go to Sales"
+                              routerLink="/sales"
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >monetization_on</mat-icon>                  
+                              My Pending Orders   
+                       </button>
+
+                       <mat-divider></mat-divider>   -->
+
+                       <button mat-raised-button 
+                              class="btn btn-secondary side-button"
+                              title="Go to Sales"
+                              routerLink="/sales"
+                              aria-label="Button that displays a tooltip that can be programatically disabled"
+                              style="margin-bottom:10%;">
+                              <mat-icon >monetization_on</mat-icon>                  
+                              Sell Products    
+                       </button>
+
+                       <mat-divider></mat-divider>  
+  
+                  <mat-divider></mat-divider> 
+  
+
+                  
+   
+        </div>
+  
+    </div>

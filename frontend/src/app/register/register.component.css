@@ -1,0 +1,57 @@
+.login-main-div{
+    margin-left: 35%;
+    margin-top: 10%;
+  }
+  .mat-card-header{
+    justify-content: center;
+    text-align: center;
+  }
+  .mat-card-header-image {
+    width: 68%;
+    background-size: cover;
+    justify-self: center;
+  }
+  
+  .mat-card-aligner{
+    width: 45%;
+    height: 90%;
+    
+  }
+  .mat-card-content{
+    justify-content: center;
+    padding: 10%;
+  }
+  .login-input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .hr-border{
+    border:solid thin
+  }
+  .fingerprint-icon{
+    
+    padding: 0 20px 0 0  ;
+  }
+  
+  .input-email-container{ display: flex;
+    flex-direction: column;
+  }
+  
+  .input-email-container > * {
+    width: 84%; margin-left: 8%;
+  }
+
+  .input-password-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-password-container > * {
+    width: 80%; left: 10%;
+  }
+  
+  .loginFormErrorDiv{
+    text-align: center;
+    padding-top: 6px;
+    width: 100%;
+  }

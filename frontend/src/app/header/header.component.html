@@ -1,0 +1,28 @@
+<mat-toolbar style="background: linear-gradient( #2b74bd ,rgb(183, 226, 243) )" class="header-toolbar">
+
+    <mat-toolbar-row>
+      <!-- <h6>DiMS</h6> -->
+      
+      <img height="90%" routerLink="" title="DiMS" src="assets/images/Dims cropped.png">
+      
+      <span class="toolbar-row-spacer"></span>
+      
+      <mat-icon class="toolbar-row-icon" 
+                aria-hidden="false"
+                (click)="onClickProfile()"
+                title="My Profile"
+                style="cursor: pointer;">account_circle</mat-icon>
+                
+                <p (click)="onClickProfile()" title="My Profile" style="cursor: pointer; margin-top: 1%; margin-right: 1%">{{userName}}</p>    
+      
+      <mat-icon class="toolbar-row-icon" 
+                aria-hidden="false" 
+                title="Log-out"
+                (click)="onClickLogout()"
+                style="cursor: pointer;">power_settings_new</mat-icon>
+    
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
+
+ 

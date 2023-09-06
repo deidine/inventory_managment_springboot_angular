@@ -1,0 +1,153 @@
+<!-- <div style="background: linear-gradient( #2b74bd ,rgb(183, 226, 243))"> -->
+<div>
+  <div class="login-main-div" >
+
+    <mat-card class="mat-card-aligner example-card" >
+        <mat-card-header class="mat-card-header">
+            <mat-card-title>
+          <img class="mat-card-header-image" src="assets/images/DiMS login logo.png">
+        </mat-card-title>
+            <mat-card-subtitle>Sign-in to your account</mat-card-subtitle>
+        </mat-card-header>
+
+        <hr class="hr-border">
+        
+        <div *ngIf=loginFormError class="loginFormErrorDiv">
+            <h6 class="alert alert-danger">Invalid Credentials</h6>
+        </div>
+
+        <br>
+
+
+        <!-- Template Driven Approach -->
+        
+        <!-- <form #loginForm="ngForm">
+
+            <div class="form-group input-username-container">
+
+                <label for="username" >username</label>
+                <input type="username" class="form-control" #ipusername="ngModel" required
+                       [class.is-invalid]="ipusername.invalid && ipusername.touched"
+                       [(ngModel)]="loginDetails.inputusername" name=inputusername>
+
+                <small class="text-danger" 
+                       [class.d-none]=" ipusername.valid || ipusername.untouched ">Invalid username</small>       
+              </div>
+      
+              <div class="form-group input-username-container">
+
+                  <label for="password" >Password</label>
+                  <input type="password" class="form-control" #ipPassword="ngModel" required
+                         [class.is-invalid]="ipPassword.invalid && ipPassword.touched"
+                         [(ngModel)]="loginDetails.inputPassword" name="inputPassword">
+                  
+                      <small class="text-danger" 
+                      [class.d-none]=" ipPassword.valid || ipusername.untouched ">Invalid Password</small> 
+                         
+                         
+              </div>
+
+        </form> -->
+
+        
+        <!-- Reactive Approach -->
+
+        <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            
+            <label>username</label>
+            <input type="text" [class.is-invalid]="loginForm.get('ipusername').invalid
+                    && loginForm.get('ipusername').touched"
+                   [class.is-valid]="loginForm.get('ipusername').valid" 
+                   formControlName="ipusername" class="form-control">
+
+                   <small class="text-danger"
+                          [class.d-none]="loginForm.get('ipusername').valid
+                          || loginForm.get('ipusername').untouched">
+                       Invalid username  </small>
+            
+          </div>
+
+          <div class="form-group">
+            
+              <label>Password</label>
+              <input type="password" [class.is-invalid]="loginForm.get('ipPassword').invalid
+                      && loginForm.get('ipPassword').touched"
+                      [class.is-valid]="loginForm.get('ipPassword').valid" 
+                      formControlName="ipPassword" class="form-control">
+              <small [class.d-none]="loginForm.get('ipPassword').invalid 
+                      && loginForm.get('ipPassword').touched">Password must be of min. 6 characters</small>
+              
+              <small class="text-danger"
+                      [class.d-none]="loginForm.get('ipPassword').valid
+                      || loginForm.get('ipPassword').untouched">
+                  Invalid Password (min 6 characters required)</small>
+
+          </div>
+  
+
+       
+
+
+
+        <!-- Material Approach -->
+        
+        <!-- <form [formGroup] = "loginForm">
+          <div class="input-username-container">
+ 
+          
+          <mat-form-field class="form-element"> 
+              <input matInput placeholder="Enter username" formControlName="ipusername" >
+                    <mat-error *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+                      {{ getErrorusername() }}
+                      </mat-error>
+            </mat-form-field>
+          </div>
+
+            <br> <br>
+
+            <div class="input-password-container">
+                <mat-form-field>
+                  <input matInput formControlName="ipPassword" required
+                         placeholder="Enter your password" 
+                         [type]="passHide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passHide">
+                  <mat-icon>{{passHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint>Password should be of minimum six characters</mat-hint>
+                  <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                      Invalid Pasword
+                  </mat-error>
+                </mat-form-field>
+                              
+            </div>
+
+        </form> -->
+                    
+        <br>
+
+          <mat-card-actions style="justify-content: center">
+            <button mat-raised-button 
+                    class="btn btn-secondary"
+                    matTooltip="Log-in into your account"
+                    aria-label="Button that displays a tooltip that can be programatically disabled"
+                    [disabled]="loginForm.get('ipusername').invalid || loginForm.get('ipPassword').invalid"
+                    style="width:80%; left:10%; background:rgb(183, 226, 243)">
+                    <mat-icon >fingerprint</mat-icon>                  
+                    Login    
+             </button>
+          </mat-card-actions>
+
+
+        <br>
+
+      </form>
+        
+        <hr class="hr-border">
+
+    </mat-card>
+
+  </div>
+</div>
+  

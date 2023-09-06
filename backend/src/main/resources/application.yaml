@@ -1,0 +1,51 @@
+server:
+    port: 8080
+ 
+spring:
+
+  security:
+    user:
+      name: deidine
+      password: deidine
+    # jwt:
+    #   token:
+    #     secret-key: secret-key
+    #     expire-length: 300000 # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
+     
+  jpa:
+    properties:
+        hibernate:
+            dialect : org.hibernate.dialect.MySQL5InnoDBDialect
+            # dialect: org.hibernate.dialect.H2Dialect
+
+            format_sql : true 
+            id:
+              new_generator_mappings: false
+
+
+    hibernate:
+      ddl-auto: create #update,create
+      # ddl-auto: create-drop
+    show-sql: true 
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/ragmana?createDatabaseIfNotExist=true
+    # url: jdbc:h2:mem:test_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+
+    username: root
+    password:
+    main:
+      allow-bean-definition-overriding : true
+
+security:
+  jwt:
+    token:
+      secret-key: secret-key
+      expire-length: 300000 # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
+      
+UserController:
+  signin: Authenticates user and returns its JWT token.
+  signup: Creates user and returns its JWT token
+  delete: Deletes specific user by username
+  search: Returns specific user by username
+  me: Returns current user's data

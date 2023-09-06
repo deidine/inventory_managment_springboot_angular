@@ -1,0 +1,166 @@
+
+
+<!-- Header Toolbar -->
+
+<mat-toolbar style="background: linear-gradient( #2b74bd ,rgb(183, 226, 243) )" class="header-toolbar">
+
+        <mat-toolbar-row>
+          <!-- <h6>DiMS</h6> -->
+          
+          <img height="90%" routerLink="" title="DiMS" src="assets/images/Dims cropped.png">
+          
+          <span class="toolbar-row-spacer"></span>
+          
+          <mat-icon class="toolbar-row-icon" 
+                    aria-hidden="false"
+                    (click)="onClickProfile()"
+                    title="My Profile"
+                    style="cursor: pointer;">account_circle</mat-icon>
+                    
+                    <p (click)="onClickProfile()" title="My Profile" style="cursor: pointer; margin-top: 1%; margin-right: 1%">{{userName}}</p>    
+          
+          <mat-icon class="toolbar-row-icon" 
+                    aria-hidden="false" 
+                    title="Log-out"
+                    (click)="onClickLogout()"
+                    style="cursor: pointer;">power_settings_new</mat-icon>
+        
+        </mat-toolbar-row>
+      
+</mat-toolbar>
+  
+  
+  <!-- Central Containt -->
+  <div class="content-div">
+  
+    <!-- SideBar List -->
+    <sidenavbar></sidenavbar>
+  
+  <!-- Main Grid -->
+  
+    <div class='content-card' >
+  
+   
+        
+        <div class="content-div" >
+          
+      <!-- Profile Form -->
+
+
+      <h5 style="text-align: left"> My Profile</h5>  
+      <hr class="hr-silver">
+     
+<div style="margin :5%">
+
+ 
+        <form  [formGroup]="profileForm" style="margin-top: 2%">
+  
+            <mat-form-field style="width: 100%">
+              <input matInput formControlName="profileName"
+                     placeholder="Name" >
+            </mat-form-field>
+            <small class="text-danger"
+                    [class.d-none]="profileForm.get('profileName').valid || profileForm.get('profileName').untouched">
+                    
+                    Invalid Name Entered
+        
+            </small>
+    
+        
+            <mat-form-field style="width: 100%">
+                <input matInput type="email" formControlName="profileEmail" 
+                       placeholder="Email" [disabled]='true'>
+            </mat-form-field>
+          
+            <mat-form-field style="width: 100%">
+                <input matInput type="tel" formControlName="profileContact" 
+                       placeholder="Contact No" >
+            </mat-form-field>
+          
+            <!-- <mat-form-field style="width: 100%">
+                <input matInput type="password" formControlName="profilePassword"
+                       placeholder="Password" >
+            </mat-form-field>
+            <small class="text-danger"
+                    [class.d-none]="profileForm.get('profilePassword').valid || profileForm.get('profilePassword').untouched">
+                    
+                    Invalid Password
+        
+            </small> -->
+          
+            <mat-form-field style="width: 100%">
+                <input matInput formControlName="profileAddress" 
+                       placeholder="Address" >
+            </mat-form-field>
+            <small class="text-danger"
+                    [class.d-none]="profileForm.get('profileAddress').valid || profileForm.get('profileAddress').untouched">
+                    
+                    Invalid Address 
+          
+            </small>
+            
+        
+            <mat-form-field style="width: 100%">
+                <input matInput formControlName="profileArea"
+                       placeholder="Area" [class.disabled]='true'>
+            </mat-form-field>
+                      
+        </form>
+        
+        <div style="margin-top: 2%">
+        
+            <button mat-raised-button 
+                class="btn btn-secondary"
+                matTooltip="Update Details"
+                aria-label="Button that displays a tooltip that can be programatically disabled"
+                [disabled]="profileForm.untouched || profileForm.get('profileName').invalid || 
+                            profileForm.get('profileAddress').invalid"
+                style="width:25%; left:5%; margin-right: 10%; " 
+                (click)="onClickUpdateProfile()"
+                >
+                <mat-icon >how_to_reg</mat-icon>                  
+                Update Details    
+            </button>
+        
+        
+            <button mat-raised-button 
+                class="btn btn-secondary"
+                matTooltip="Change Existing Password"
+                aria-label="Button that displays a tooltip that can be programatically disabled"
+                style="width:25%; ; " 
+                (click)="onClickUpdatePassword()"
+                >
+                <mat-icon >autorenew</mat-icon>                  
+                Change Password  
+            </button>
+            
+            <button mat-raised-button 
+            class="btn btn-secondary"
+            matTooltip="Cancel Editing"
+            aria-label="Button that displays a tooltip that can be programatically disabled"
+            style="width:25%; left:5%; " 
+            (click)="onClickCancel()"
+            >
+            <mat-icon >clear</mat-icon>                  
+            Cancel  
+        </button>
+        
+        
+        </div>
+
+   
+
+</div>  
+                 
+       </div>
+  
+    
+      
+    </div>
+  
+  </div>
+  
+  
+
+
+
