@@ -9,9 +9,7 @@
     <sidenavbar></sidenavbar>
 
     <!-- Main Grid -->
-
-    <div class='content-card'>
-
+    <div mat-dialog-content>
         {{deidine}}
         <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
         <hr class="hr-silver">
@@ -20,15 +18,16 @@
         <div style="width: 80%; margin-left: 10% ;">
 
 
-            <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" style="margin-top: 2%">
+            <form [formGroup]="addProductForm"  #myForm = "ngForm"  class="full-width" (ngSubmit)="onSubmit(); myForm.reset()" style="margin-top: 2%">
 
-                
+
                 <div class="form-group">
 
                     <label> depName</label>
-                    <input type="text" [class.is-invalid]="addProductForm.get('depName').invalid
+                    <input required  type="text" [class.is-invalid]="addProductForm.get('depName').invalid
                                         && addProductForm.get('depName').touched"
-                        [class.is-valid]="addProductForm.get('depName').valid" formControlName="depName" class="form-control">
+                        [class.is-valid]="addProductForm.get('depName').valid" formControlName="depName"
+                        class="form-control">
 
                     <small class="text-danger" [class.d-none]="addProductForm.get('depName').valid
                                               || addProductForm.get('depName').untouched">
@@ -38,7 +37,7 @@
                 <div class="form-group">
 
                     <label>Product depUrl</label>
-                    <input type="text" [class.is-invalid]="addProductForm.get('depUrl').invalid
+                    <input required type="text" [class.is-invalid]="addProductForm.get('depUrl').invalid
                                         && addProductForm.get('depUrl').touched"
                         [class.is-valid]="addProductForm.get('depUrl').valid" formControlName="depUrl"
                         class="form-control">
@@ -51,7 +50,7 @@
                 <div class="form-group">
 
                     <label> depTitre</label>
-                    <input type="text" [class.is-invalid]="addProductForm.get('depTitre').invalid
+                    <input required type="text" [class.is-invalid]="addProductForm.get('depTitre').invalid
                                         && addProductForm.get('depTitre').touched"
                         [class.is-valid]="addProductForm.get('depTitre').valid" formControlName="depTitre"
                         class="form-control">
@@ -61,23 +60,17 @@
                         depTitre </small>
 
                 </div>
-<!-- 
                 <div class="form-group">
+                    <label for="type">entite name</label>
 
-                    <label>id departemnt</label>
-                    <input type="number" [class.is-invalid]="addProductForm.get('dep_id').invalid
-                                            && addProductForm.get('dep_id').touched"
-                        [class.is-valid]="addProductForm.get('dep_id').valid" formControlName="dep_id"
-                        class="form-control">
-
-                    <small class="text-danger" [class.d-none]="addProductForm.get('dep_id').valid
-                                                  || addProductForm.get('dep_id').untouched">
-                        Please Enter dep_id </small>
-
-                </div> -->
-<!-- <button [disabled]="addProductForm.get('dep_id').invalid> -->
-                                                   
-                 <button mat-raised-button type="submit" title="Add in Product List" 
+                    <select id="entiteId" class="form-control" name="entiteId" formControlName="entiteId">
+                       <option disabled>select one</option>
+                        <option *ngFor="let entite of entiteList " value="{{entite.entiteId}}">
+                            {{entite.entiteName}}
+                        </option>
+                    </select>
+                </div>
+                <button mat-raised-button type="submit" title="Add in Product List"
                     style="width:30%; left:10%; margin-right: 20%; ">
                     <mat-icon>add</mat-icon>
                     ADD

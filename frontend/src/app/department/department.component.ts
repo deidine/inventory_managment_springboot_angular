@@ -45,19 +45,20 @@ export class departmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(localStorage.getItem("currentUserRole")==`["ROLE_CLIENT"]`){
+    // if(localStorage.getItem("currentUserRole")==`["ROLE_CLIENT"]`){
 
-    this.deidine = "bonjour";
-    this.departmentervice.getDepartements().subscribe(
-      response => {
-        this.department = response;
+      this.departmentervice.getDepartements().subscribe(
+        response => {
+          
+          this.department = response;
+          this.deidine = this.department.entite;
         this.departments = new MatTableDataSource(this.department);
         this.department.sort = this.sort;
         this.length = response.length;
         this.department.paginator = this.paginator;
         console.log("deidine " + this.department)
       });
-    }
+    // }
   }
 
 
@@ -102,7 +103,7 @@ export class departmentComponent implements OnInit {
 
   }
 
-  displayedColumns: string[] = ['departmentName','departmentId',  'departmentUrl' , 'departmentTitre' ,  'edit','delete'];
+  displayedColumns: string[] = ['departmentName','departmentId',  'departmentUrl' , 'departmentTitre' , 'departmentEntite' ,  'edit','delete'];
 
   editdepartment(element){
     let departmentId = element.departmentId;

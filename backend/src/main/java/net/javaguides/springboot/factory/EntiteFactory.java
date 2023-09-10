@@ -6,12 +6,12 @@ import net.javaguides.springboot.model.Department;
 import net.javaguides.springboot.model.Entite;
 
 public class EntiteFactory {
-    public static Entite build(long EntiteId, String Mougattaa, String Wilayas, String affectation/* ,Department department*/) {
-        return Entite.builder().entiteId(EntiteId)
+    public static Entite build( String Mougattaa, String Wilayas, String affectation  ,String type  ,Set<Department> department ,String entiteName) {
+        return Entite.builder()
                 .Mougattaa(Mougattaa)
                 .Wilayas(Wilayas)
-                .affectation(affectation)
-                // .department((Set<Department>) department)
+                .affectation(affectation).type(type)
+                .departments((Set<Department>) department).entiteName(entiteName)
                 .build();
     }
 

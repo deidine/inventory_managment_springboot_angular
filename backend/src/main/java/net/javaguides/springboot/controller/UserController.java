@@ -39,6 +39,7 @@ import net.javaguides.springboot.dto.LoginDto;
 import net.javaguides.springboot.dto.UserDataDTO;
 import net.javaguides.springboot.dto.UserResponseDTO;
 import net.javaguides.springboot.service.UserService;
+import net.javaguides.springboot.utility.JwtResponse;
 import net.javaguides.springboot.utility.MessageResponse;
 
 @RestController
@@ -72,7 +73,7 @@ public class UserController {
       @ApiResponse(code = 400, message = "Something went wrong"), //
       @ApiResponse(code = 403, message = "Access denied"), //
       @ApiResponse(code = 422, message = "Username is already in use") })
-  public String signup(@ApiParam("Signup User") @RequestBody UserDataDTO user) {
+  public ResponseEntity<JwtResponse> signup(@ApiParam("Signup User") @RequestBody UserDataDTO user) {
     return userService.signup(modelMapper.map(user, AppUser.class));
   }
 

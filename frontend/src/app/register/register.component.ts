@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'; 
-import { TokenStorageService } from '../login/_services/token-storage.service';
+import { TokenStorageService } from '../login/services/token-storage.service';
 
 import { LoginCheckService, UserInfoReg, RrgisterInfo } from '../login/services/login-check.service';
 import { AuthenticatorService } from '../login/services/authenticator.service';
@@ -38,6 +38,8 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar, private tokenStorage: TokenStorageService
   ) { }
   isLoggedIn = false;
+  userStorage: any;
+
   isLoginFailed = false;
   ngOnInit() {
 
@@ -64,12 +66,15 @@ export class RegisterComponent implements OnInit {
 
   handleSuccessfulResponse(response) {
     this.user = response;
-        //  localStorage.setItem("currentUserId", JSON.stringify(this.user.userId));
-        localStorage.setItem("currentUsername", JSON.stringify(this.user.username));
-        localStorage.setItem("currentUserRole", JSON.stringify(this.user.appUserRoles));
-        localStorage.setItem("currentpassword", (this.user.password));
+    this.user = response;
+     this.userStorage = this.tokenStorage.getUser()
+    localStorage.setItem("currentUserId", JSON.stringify(this.userStorage.id));
+    localStorage.setItem("currentUserEmail", JSON.stringify(this.userStorage.email));
+    localStorage.setItem("currentUserRole", JSON.stringify(this.userStorage.roles));
+    localStorage.setItem("currentUserName", (this.userStorage.username));
+    localStorage.setItem("UserToken", (this.tokenStorage.getToken()));
 
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/login']);
       }
  
       role:any;
@@ -85,19 +90,19 @@ export class RegisterComponent implements OnInit {
     this.registerInfo.appUserRoles=["ROLE_CLIENT"];
     this.loginService.register(this.registerInfo.username,  this.registerInfo.password,this.registerInfo.email,this.registerInfo.appUserRoles).subscribe(
       response => {
-        // this.handleSuccessfulResponse(response),
+        this.handleSuccessfulResponse(response),
         //   this.tokenStorage.saveToken(response.accessToken);
 
         this.tokenStorage.saveUser(response);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        alert(response)
-        this.reloadPage();
+        // this.reloadPage();
       },
       err => {
-        this.handleSuccessfulResponse(err)
-
+        // this.handleSuccessfulResponse(err)
+        
+        alert("error")
         // this.reloadPage();
       }
     );

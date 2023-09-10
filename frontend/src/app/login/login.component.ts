@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { AuthService } from './_services/auth.service';
-import { TokenStorageService } from './_services/token-storage.service';
+ import { TokenStorageService } from './services/token-storage.service';
 
 import { LoginCheckService, UserInfo, LoginInfo } from './services/login-check.service';
 import { AuthenticatorService } from './services/authenticator.service';

@@ -4,10 +4,12 @@ import { map } from 'rxjs/operators';
 import { stringify } from '@angular/compiler/src/util';
 import { Observable } from 'rxjs';
 import { UserProfile } from 'src/app/models/UserModels';
-
+import { environment } from 'src/environments/environment';
+ 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -18,10 +20,11 @@ export class LoginCheckService {
   pwd: any;
   usn: any;
 
+
   login(username: string, password: string): Observable<any> {
     console.log("Call to backend method to check userEmail and password " + username);
 
-    return this.httpClient.post<LoginInfo>('http://localhost:8080/users/signin',
+    return this.httpClient.post<LoginInfo>( `${environment.authURL}/users/signin`,
       {
         username,
         password
@@ -31,8 +34,7 @@ export class LoginCheckService {
  
   register(username: string, password: string, email: string,appUserRoles:string[]): Observable<any> {
     console.log("Call to backend method to check userEmail and password " + username);
-alert(appUserRoles)
-    return this.httpClient.post<RrgisterInfo>('http://localhost:8080/users/signup',
+     return this.httpClient.post<RrgisterInfo>(`${environment.authURL}/users/signup`,
       {
         username,
         password,
@@ -48,7 +50,7 @@ alert(appUserRoles)
     let param = new HttpParams();
     param = param.set('userId',userId);
 
-    let url = "http://localhost:8080/users/users/"+userId;
+    let url = `${environment.authURL}/users/users/`+userId;
 
     return this.httpClient.get<UserProfile>(url);
   }

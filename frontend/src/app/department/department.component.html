@@ -39,7 +39,7 @@
       <hr class="hr-silver">
 
 
-
+{{deidine}}
       <!-- Mat Table for retailer list  -->
 
       <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="departments"
@@ -67,6 +67,10 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header> department Name </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.departmentName}} </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="departmentEntite">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> department entite </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.entite.entiteId}} </mat-cell>
+        </ng-container>
 
 
         <ng-container matColumnDef="edit">
@@ -83,11 +87,12 @@
 
         </ng-container>
         <ng-container matColumnDef="delete">
+          
           <mat-header-cell *matHeaderCellDef mat-sort-header> delete department </mat-header-cell>
           <mat-cell (click)=deletedepartment(element) style="cursor: pointer" title="delete department  "
             *matCellDef="let element">
             <a>
-              <i class="material-icons">
+              <i class="material-icons delete">
                 border_color
               </i>
             </a>
