@@ -25,6 +25,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterComponent } from './register/register.component';
 import { PersonnelleComponent } from './personnelle/personnelle.component';
 import { EditDepComponent } from './department/edit-dep/edit-dep.component';
+import { AddEntiteComponent } from './Entite/add-entite/add-entite.component';
+  import { GetAllentitesComponent } from './Entite/get-all-entites/get-all-entites.component';
+// import { GetentiteByCategoryComponent } from './Entite/get-entite-by-category/get-entite-by-category.component';
+// import { UpdateEntiteComponent } from './Entite/update-entite/update-entite.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { EditDepComponent } from './department/edit-dep/edit-dep.component';
     AdminComponent,
     // DistributerComponent,
     // RetailerComponent,
+    AddEntiteComponent,GetAllentitesComponent,//GetentiteByCategoryComponent,UpdateEntiteComponent,
     UpdatePasswordComponent,
     EditDepComponent, AddDepComponent,EditProductComponent,  HeaderComponent, SidenavbarComponent,DialogOverviewExampleDialog, LogoutDialogComponent
    ,MyProfileComponent, PageNotFoundComponent, RegisterComponent,PersonnelleComponent,AddProductComponent ,ProductsComponent 

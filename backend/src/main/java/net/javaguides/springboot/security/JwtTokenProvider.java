@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import net.javaguides.springboot.model.AppUserRole;
@@ -33,10 +34,13 @@ public class JwtTokenProvider {
    * here. Ideally, in a
    * microservices environment, this key would be kept on a config-server.
    */
-  @Value("${security.jwt.token.secret-key:secret-key}")
+  // @Value("${security.jwt.token.secret-key:secret-key}")
+  @Value("secret-key")
   private String secretKey;
 
-  @Value("${security.jwt.token.expire-length:3600000}")
+  @Value("3600000")
+  // @Value("${security.jwt.token.expire-length:3600000}")
+
   private long validityInMilliseconds = 3600000; // 1h
 
   @Autowired
@@ -73,8 +77,8 @@ public class JwtTokenProvider {
     return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
   }
 
-  public String resolveToken(HttpServletRequest req) {
-    String bearerToken = req.getHeader("Authorization");
+  public String resolveToken(ServletRequest req) {
+    String bearerToken = ((HttpServletRequest) req).getHeader("Authorization");
     if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
       return bearerToken.substring(7);
     }

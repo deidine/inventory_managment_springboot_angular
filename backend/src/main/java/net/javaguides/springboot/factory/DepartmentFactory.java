@@ -2,6 +2,7 @@ package net.javaguides.springboot.factory;
 
 import net.javaguides.springboot.model.Department;
 // import net.javaguides.springboot.entity.Faculty;
+import net.javaguides.springboot.model.Entite;
 
 /***
  * DepartmentFactory.java
@@ -10,12 +11,12 @@ import net.javaguides.springboot.model.Department;
  */
 public class DepartmentFactory
 {
-    public static Department build(String departmentName, String departmentUrl, String departmentTitre/*, Faculty faculty */)
+    public static Department build(String departmentName, String departmentUrl, String departmentTitre, Entite entite)
     {
         return Department.builder().departmentName(departmentName)
                                    .departmentUrl(departmentUrl)
                                    .departmentTitre(departmentTitre)
-                                //    .faculty(faculty)
+                                   .entite(entite)
                                    .build();
     }
 }

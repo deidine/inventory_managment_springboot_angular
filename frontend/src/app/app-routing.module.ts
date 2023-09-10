@@ -15,6 +15,10 @@ import { RegisterComponent } from './register/register.component';
 import { PersonnelleComponent } from './personnelle/personnelle.component';
 import { EditDepComponent } from './department/edit-dep/edit-dep.component';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
+// import { GetentiteByCategoryComponent } from './Entite/get-entite-by-category/get-entite-by-category.component';
+// import { UpdateEntiteComponent } from './Entite/update-entite/update-entite.component';
+import { GetAllentitesComponent } from './Entite/get-all-entites/get-all-entites.component';
+import { AddEntiteComponent } from './Entite/add-entite/add-entite.component';
  
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -35,6 +39,11 @@ const routes: Routes = [
   {path: 'personnelle' , component: PersonnelleComponent },
    {path: 'page-not-found' , component: PageNotFoundComponent},
   {path: 'register' , component: RegisterComponent},
+  // {path: 'getbycat' , component: GetentiteByCategoryComponent},
+  // {path: 'updateentite' , component: UpdateEntiteComponent},
+  {path: 'getallentite' , component: GetAllentitesComponent},
+  {path: 'addentite' , component:AddEntiteComponent },
+   
   
   {path: '**' ,redirectTo: ('/page-not-found')},
 

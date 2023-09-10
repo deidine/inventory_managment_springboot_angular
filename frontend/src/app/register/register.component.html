@@ -19,40 +19,7 @@
         <br>
 
 
-        <!-- Template Driven Approach -->
-        
-        <!-- <form #loginForm="ngForm">
-
-            <div class="form-group input-username-container">
-
-                <label for="username" >username</label>
-                <input type="username" class="form-control" #ipusername="ngModel" required
-                       [class.is-invalid]="ipusername.invalid && ipusername.touched"
-                       [(ngModel)]="loginDetails.inputusername" name=inputusername>
-
-                <small class="text-danger" 
-                       [class.d-none]=" ipusername.valid || ipusername.untouched ">Invalid username</small>       
-              </div>
-      
-              <div class="form-group input-username-container">
-
-                  <label for="password" >Password</label>
-                  <input type="password" class="form-control" #ipPassword="ngModel" required
-                         [class.is-invalid]="ipPassword.invalid && ipPassword.touched"
-                         [(ngModel)]="loginDetails.inputPassword" name="inputPassword">
-                  
-                      <small class="text-danger" 
-                      [class.d-none]=" ipPassword.valid || ipusername.untouched ">Invalid Password</small> 
-                         
-                         
-              </div>
-
-        </form> -->
-
-        
-        <!-- Reactive Approach -->
-
-        <form [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup] = "loginForm"  #myForm = "ngForm"  (ngSubmit)="onSubmit(); myForm.reset()">
 
           <div class="form-group">
             
@@ -71,7 +38,7 @@
           <div class="form-group">
             
             <label>email</label>
-            <input type="email" [class.is-invalid]="loginForm.get('ipusername').invalid
+            <input type="email" [class.is-invalid]="loginForm.get('ipemail').invalid
                     && loginForm.get('ipemail').touched"
                    [class.is-valid]="loginForm.get('ipemail').valid" 
                    formControlName="ipemail" class="form-control">
@@ -99,46 +66,7 @@
                   Invalid Password (min 6 characters required)</small>
 
           </div>
-  
-
-       
-
-
-
-        <!-- Material Approach -->
-        
-        <!-- <form [formGroup] = "loginForm">
-          <div class="input-username-container">
- 
-          
-          <mat-form-field class="form-element"> 
-              <input matInput placeholder="Enter username" formControlName="ipusername" >
-                    <mat-error *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
-                      {{ getErrorusername() }}
-                      </mat-error>
-            </mat-form-field>
-          </div>
-
-            <br> <br>
-
-            <div class="input-password-container">
-                <mat-form-field>
-                  <input matInput formControlName="ipPassword" required
-                         placeholder="Enter your password" 
-                         [type]="passHide ? 'password' : 'text'">
-                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passHide">
-                  <mat-icon>{{passHide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                  <mat-hint>Password should be of minimum six characters</mat-hint>
-                  <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
-                      Invalid Pasword
-                  </mat-error>
-                </mat-form-field>
-                              
-            </div>
-
-        </form> -->
-                    
+                      
         <br>
 
           <mat-card-actions style="justify-content: center">
@@ -149,7 +77,7 @@
                     [disabled]="loginForm.get('ipusername').invalid || loginForm.get('ipPassword').invalid"
                     style="width:80%; left:10%; background:rgb(183, 226, 243)">
                     <mat-icon >fingerprint</mat-icon>                  
-                    Login    
+                    register    
              </button>
           </mat-card-actions>
 

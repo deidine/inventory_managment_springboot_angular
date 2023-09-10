@@ -4,11 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
- import net.javaguides.springboot.model.Department; 
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
+import net.javaguides.springboot.model.Department;
+import net.javaguides.springboot.dto.UserResponseDTO;
 import net.javaguides.springboot.exception.ResourceNotFoundException;
 import net.javaguides.springboot.factory.DepartmentFactory;
 import net.javaguides.springboot.service.IDepartmentService;
@@ -37,17 +43,19 @@ public class DepartmentController {
     }
     // @CrossOrigin(origins = "http://localhost:4200")
 
-    @PostMapping("save")
-    public ResponseEntity<Department> save(@RequestBody Department department) {
+    @PostMapping(value = "save", produces = { "application/json" })
+    // @PreAuthorize("hasRole('ROLE_CLIENT')")
+    // @ApiOperation(value = "${DepartmentController.save}", authorizations = {
+    // @Authorization(value = "secret-key") })
+
+    public ResponseEntity<Department> save(@RequestBody Department department,@RequestHeader HttpHeaders  header) {
         log.info("Save Request: ", department);
 
         Department ValidateDepartment;
         try {
             ValidateDepartment = DepartmentFactory.build(department.getDepartmentName(),
                     department.getDepartmentUrl(),
-                    department.getDepartmentTitre()
-            // ,department.getFaculty()
-            );
+                    department.getDepartmentTitre(), department.getEntite());
         } catch (IllegalArgumentException i) {
             log.info("Save error: ", i.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -83,23 +91,18 @@ public class DepartmentController {
         return ResponseEntity.noContent().build();
     }
 
-	@PutMapping("update/{id}")
-	public ResponseEntity<Department> updateDepartment(@PathVariable Integer id, @RequestBody Department departmentDetails){
-		Department department = departmentService.read(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Department not exist with id :" + id));
-		
-		department.setDepartmentName(departmentDetails.getDepartmentName());
-		department.setDepartmentTitre(departmentDetails.getDepartmentTitre());
-		department.setDepartmentUrl(departmentDetails.getDepartmentUrl());
-		
-		Department updatedDepartment = departmentService.save(department);
-		return ResponseEntity.ok(updatedDepartment);
-	}
+    @PutMapping("update/{id}")
+    public ResponseEntity<Department> updateDepartment(@PathVariable Integer id,
+            @RequestBody Department departmentDetails) {
+        Department department = departmentService.read(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Department not exist with id :" + id));
 
+        department.setDepartmentName(departmentDetails.getDepartmentName());
+        department.setDepartmentTitre(departmentDetails.getDepartmentTitre());
+        department.setDepartmentUrl(departmentDetails.getDepartmentUrl());
 
+        Department updatedDepartment = departmentService.save(department);
+        return ResponseEntity.ok(updatedDepartment);
+    }
 
-
-
-     
-    
 }

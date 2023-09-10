@@ -17,7 +17,7 @@ import net.javaguides.springboot.exception.CustomException;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 // We should use OncePerRequestFilter since we are doing a database call, there is no point in doing this more than once
-public class JwtTokenFilter extends OncePerRequestFilter {
+public class JwtTokenFilter extends GenericFilterBean {
 
   private JwtTokenProvider jwtTokenProvider;
 
@@ -26,21 +26,30 @@ public class JwtTokenFilter extends OncePerRequestFilter {
   }
 
   @Override
-  protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-    String token = jwtTokenProvider.resolveToken(httpServletRequest);
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
+    // TODO Auto-generated method stub
+    String token = jwtTokenProvider.resolveToken((HttpServletRequest) request);
+
     try {
       if (token != null && jwtTokenProvider.validateToken(token)) {
         Authentication auth = jwtTokenProvider.getAuthentication(token);
         SecurityContextHolder.getContext().setAuthentication(auth);
       }
-    } catch (CustomException ex) {
-      //this is very important, since it guarantees the user is not authenticated at all
-      SecurityContextHolder.clearContext();
-      httpServletResponse.sendError(ex.getHttpStatus().value(), ex.getMessage());
-      return;
-    }
+      chain.doFilter(request, response);
+      this.resetAuthenticationAfterRequest();
 
-    filterChain.doFilter(httpServletRequest, httpServletResponse);
+    } catch (CustomException ex) {
+      // this is very important, since it guarantees the user is not authenticated at
+      // all
+      SecurityContextHolder.clearContext();
+      ((HttpServletResponse) response).sendError(ex.getHttpStatus().value(), ex.getMessage());
+
+    }
   }
 
+
+  private void resetAuthenticationAfterRequest() {
+    SecurityContextHolder.getContext().setAuthentication(null);
+}
 }

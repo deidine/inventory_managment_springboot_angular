@@ -7,6 +7,8 @@ import { DepartementService } from '../../services/department.service';
 
 import { UserProfile } from 'src/app/models/UserModels';
 import { LoginCheckService } from 'src/app/login/services/login-check.service';
+import { Entite } from 'src/app/Entite/Entite';
+import { EntiteService } from 'src/app/Entite/services/entite.service';
 
 @Component({
   selector: 'add-product',
@@ -16,67 +18,74 @@ import { LoginCheckService } from 'src/app/login/services/login-check.service';
 export class AddDepComponent implements OnInit {
 
   public department: Departement = new Departement();
+  entiteList:any;
 
   public userName = localStorage.getItem("currentUserName");
   deidine: any;
   public myProfile: UserProfile;
-
-  constructor(private fb: FormBuilder,
-    private router: Router,
+   entite:Entite=new Entite();
+   constructor(private fb: FormBuilder,
+    private router: Router,private entiteService: EntiteService,
     private userProfileService: LoginCheckService,
     private departmentService: DepartementService,
     private snackBar: MatSnackBar) { }
+    
+    ngOnInit() {
+      this.deidine = this.f.depName.value
 
-  ngOnInit() {
-    this.deidine = this.f.depName.value
-  }
-
-  getProfile() {
-    let id = localStorage.getItem("currentUserId");
-
-    console.log("User Id is " + id);
-
-    this.userProfileService.getUserDetails(id).subscribe(
-      res => this.handleSuccessfulResponse(res),
-      err => this.handleSuccessfulResponse(err),
-      () => ''
-    );
-
-
-  }
-
-  handleSuccessfulResponse(response) {
-    this.myProfile = response;
-    this.userName = this.myProfile.username;
-  }
-
-  onClickProfile() {
-
-    this.router.navigate(['/my_profile']);
-
-  }
-
-  onClickLogout() {
-    console.log("Logout Clicked");
-
-    console.log("cleared User Id " + localStorage.getItem("currentUserId"));
-    localStorage.clear();
-
-    this.snackBar.open("User Logged Out", "Close", {
-      duration: 5000, verticalPosition: 'top', panelClass: ['green-snackbar']
-    });
-
-    this.router.navigate(['']);
-
-  }
-  public stringRegex: RegExp = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-
-  // public stringRegex : RegExp = /^[a-zA-Z]+(([',. -][a-zA-Z0-9 ])?[a-zA-Z0-9]*)*$/ ;
+      this.entiteService.getAllEntites().subscribe(data => {
+        this.entiteList = data;
+        
+      });
+    }
+    
+    getProfile() {
+      let id = localStorage.getItem("currentUserId");
+      
+      console.log("User Id is " + id);
+      
+      this.userProfileService.getUserDetails(id).subscribe(
+        res => this.handleSuccessfulResponse(res),
+        err => this.handleSuccessfulResponse(err),
+        () => ''
+        );
+        
+        
+      }
+      
+      handleSuccessfulResponse(response) {
+        this.myProfile = response;
+        this.userName = this.myProfile.username;
+      }
+      
+      onClickProfile() {
+        
+        this.router.navigate(['/my_profile']);
+        
+      }
+      
+      onClickLogout() {
+        console.log("Logout Clicked");
+        
+        console.log("cleared User Id " + localStorage.getItem("currentUserId"));
+        localStorage.clear();
+        
+        this.snackBar.open("User Logged Out", "Close", {
+          duration: 5000, verticalPosition: 'top', panelClass: ['green-snackbar']
+        });
+        
+        this.router.navigate(['']);
+        
+      }
+      public stringRegex: RegExp = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+      
+      // public stringRegex : RegExp = /^[a-zA-Z]+(([',. -][a-zA-Z0-9 ])?[a-zA-Z0-9]*)*$/ ;
+      
   public costRegex: RegExp = /^[0-9]*$/;
 
 
   addProductForm: FormGroup = this.fb.group({
-    // dep_id: ['', [Validators.required, Validators.pattern(this.costRegex)]],
+    entiteId: ['', [Validators.required]],
     depName: ['', [Validators.required, Validators.pattern(this.stringRegex)]],
     depUrl: ['', [Validators.required, Validators.pattern(this.stringRegex)]],
     depTitre: ['', [Validators.required, Validators.pattern(this.stringRegex)]]
@@ -85,10 +94,10 @@ export class AddDepComponent implements OnInit {
   get f() { return this.addProductForm.controls; }
 
   onSubmit() {
-
-    // this.department.id = this.f.id.value;
-    // this.department.departmentId = this.f.dep_id.value;
+    this.entite.entiteId=this.f.entiteId.value
+  
     this.department.departmentName = this.f.depName.value;
+    this.department.entite=this.entite ;
     this.department.departmentUrl = this.f.depUrl.value;
     this.department.departmentTitre = this.f.depTitre.value;
 
@@ -111,8 +120,8 @@ export class AddDepComponent implements OnInit {
       duration: 2000, verticalPosition: 'top', panelClass: ['green-snackbar']
     });
 
-    this.router.navigate(['/add-dep']);
-    this.reloadPage();
+    // this.router.navigate(['/add-dep']);
+    // this.reloadPage();
   }
 
   handle(resp) {

@@ -1,0 +1,77 @@
+ 
+    <h1>Get All entites</h1>
+    
+<hr>
+    <table id="entite">
+        <tr>
+            <th (click)="sort('id')">
+                ID&nbsp;<span class="material-icons white">
+                    unfold_more
+                    </span>
+            </th>
+
+            <th (click)="sort('entiteName')">
+                entite Name&nbsp;<span class="material-icons white">
+                    unfold_more
+                    </span>
+            </th>
+            <th (click)="sort('entiteDescription')">
+                entite Description&nbsp;<span class="material-icons white">
+                    unfold_more
+                    </span>
+            </th>
+            <th (click)="sort('Category')">
+                Category&nbsp;<span class="material-icons white">
+                    unfold_more
+                    </span>
+            </th>
+            <th (click)="sort('units')">
+                Units&nbsp;<span class="material-icons white">
+                    unfold_more
+                    </span>
+            </th>
+            <th>
+                Update
+            </th>
+            <th>
+                Delete
+            </th>
+            
+        </tr>
+
+        <tr *ngFor = "let entite of entiteList ">
+            <td>
+                {{entite.entiteId}}
+            </td>
+            <td>
+                {{entite.entiteName}}
+            </td>
+            <td>
+                {{entite.affectation}}
+            </td>
+            <td>
+                {{entite.type}}
+            </td>
+            <td>
+                {{entite.mougattaa}}
+            </td>       
+            
+            <td>
+                <span class="material-icons edit" (click)="updateentite(entite)">
+                        border_color
+                    </span>
+            </td>    
+
+            <td>
+                <span class="material-icons delete" (click)="deleteentite(entite.entiteId)">
+                    delete
+                    </span>
+                
+            </td>    
+
+
+        </tr>
+
+
+    </table>
+    

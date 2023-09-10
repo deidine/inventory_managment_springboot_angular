@@ -58,14 +58,28 @@ public class UserService {
     }
   }
 
-  public String signup(AppUser appUser) {
+  public ResponseEntity<JwtResponse> signup(AppUser appUser) {
     if (!userRepository.existsByUsername(appUser.getUsername())) {
       appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
       userRepository.save(appUser);
- 
+ System.out.println(ResponseEntity.ok(jwtTokenProvider.createToken(appUser.getUsername(),
+      appUser.getAppUserRoles())));
       // return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-      return jwtTokenProvider.createToken(appUser.getUsername(),
-      appUser.getAppUserRoles());
+      // return  ResponseEntity.ok(jwtTokenProvider.createToken(appUser.getUsername(),
+      // appUser.getAppUserRoles()));
+     Authentication authentication = authenticationManager
+          .authenticate(new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
+      AppUser user = userRepository.findByUsername(appUser.getUsername());
+      System.out.println(user);
+      SecurityContextHolder.getContext().setAuthentication(authentication);
+      String jwt = jwtTokenProvider.createToken(appUser.getUsername(),
+          userRepository.findByUsername(appUser.getUsername()).getAppUserRoles());
+      return ResponseEntity.ok(new JwtResponse(jwt,
+          user.getId(),
+          appUser.getUsername(),
+          appUser.getPassword(),
+           appUser.getEmail(),
+          appUser.getAppUserRoles()));
 
     } else {
        throw new CustomException("Username is already in use", HttpStatus.UNPROCESSABLE_ENTITY) ;
