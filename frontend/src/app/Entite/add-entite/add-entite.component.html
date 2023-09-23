@@ -1,116 +1,191 @@
-<!-- Central Containt -->
-<div class="content-div">
+<header>
+  <!-- Central Containt -->
+  <div class="content-div">
 
-  <!-- SideBar List -->
-  <sidenavbar></sidenavbar>
+    <!-- SideBar List -->
+    <sidenavbar></sidenavbar>
 
-  <!-- Main Grid -->
-  <div mat-dialog-content>
-    {{deidine}}
-    <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
-    <hr class="hr-silver">
-
-
-    <div style="width: 80%; margin-left: 10% ;">
-
-      <form [formGroup]="addentiteForm" #myForm = "ngForm" (ngSubmit)="addentite(); myForm.reset()">
-        <div class="form-group">
-          <label for="pname">entite Name</label>
-
-          <input class="form-control" type="text" id="pname" name="entitename" required placeholder="entite name.."
-            formControlName="entitename">
-        </div>
-
-        <div class="form-group">
-
-          <label for="wilayas">entite wilayas</label>
-
-          <input class="form-control" type="text" id="wilayas" name="wilayas" required placeholder="entite wilayas.."
-            formControlName="wilayas">
-
-        </div>
-        <div class="form-group">
-
-          <label for="mougattaa">entite mougattaa</label>
-          <input class="form-control" type="text" id="mougattaa" name="mougattaa" required
-            placeholder="entite mougattaa.." formControlName="mougattaa">
-        </div>
-        <div class="form-group">
-
-          <label for="type">entite type</label>
-
-          <select id="type" name="type" formControlName="type">
-            <option value="Cabinet">Cabinet</option>
-            <option value="Secrétariat Général">Secrétariat Général</option>
-            <option value="Projet">Projet</option>
-            <option value="Direction">Direction</option>
-            <option value="Ministre">Ministre</option>
-            <option value="Service">Service</option>
-            <option value="Coordination">Coordination</option>
-            <option value="Cellule">Cellule</option>
-            <option value="Inspection">Inspection</option>
-            <option value="Service Khademati">Service Khademati</option>
-            <option value="DTI">DTI</option>
-            <option value="SECRETAIRE DIRECTEUR ADJOINT DETI">SECRETAIRE DIRECTEUR ADJOINT DETI</option>
-            <option value="CHEF SERVICE MARCHE DTI">CHEF SERVICE MARCHE DTI</option>
-            <option value="DPC CHEF DIVISSION">DPC CHEF DIVISSION</option>
-            <option value="assistant">assistant</option>
-            <option value="DIVISION">DIVISION</option>
-            <option value="assistant de DPC">assistant de DPC</option>
-            <option value="مسؤول إداري">مسؤول إداري</option>
-            <option value="conseiller chargée de l'envirennement">conseiller chargée de l'envirennement</option>
-            <option value="DEPC">DEPC</option>
-            <option value="École info">École info</option>
-            <option value="مصلحةًالشؤون الطلابية">مصلحةًالشؤون الطلابية</option>
-            <option value="Dr des Etude et stage">Dr des Etude et stage</option>
-            <option value="Commissaire Adjoint">Commissaire Adjoint</option>
-            <option value="CHEF DIVISION">CHEF DIVISION</option>
-            <option value="Conseiller du PM">Conseiller du PM</option>
-            <option value="Chef Sece Labo">Chef Sece Labo</option>
-            <option value="DAAF">DAAF</option>
-            <option value="SERVICE DE LA COMPTABILITE">SERVICE DE LA COMPTABILITE</option>
-            <option value="Le Commissaire">Le Commissaire</option>
-            <option value="DIRECTEUR ADJOINT DETI">DIRECTEUR ADJOINT DETI</option>
-            <option value="DIRECTEUR DEI">DIRECTEUR DEI</option>
-            <option value="DETI CHEF SERVICE">DETI CHEF SERVICE</option>
-            <option value="DETI chef division">DETI chef division</option>
-          </select>
-
-        </div>
-        <div class="form-group">
-
-          <label for="affectation">entite affectation</label>
-          <input class="form-control" type="text" id="affectation" name="affectation" formControlName="affectation"
-            required placeholder="entite affectation..">
-
-        </div>
-        <div class="form-group">
-          <button mat-raised-button type="submit" title="Add in Product List"
-            style="width:30%; left:10%; margin-right: 20%; ">
-            <mat-icon>add</mat-icon>
-            ADD
-          </button>
-          <button mat-raised-button type="reset" title="Cancel" style="width:30%; left:10%; ">
-            <mat-icon>cancel</mat-icon>
-            Cancel
-          </button>
-
-          <br>
-          <br>
-
-          <label class="error-message">{{ errMessage }}</label>
-          <br>
-          <br>
-          <label class="successMessage">{{ successMessage }}</label>
+    <!-- Main Grid -->
+    <div mat-dialog-content>
+      {{deidine}}
+      <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
+      <hr class="hr-silver">
 
 
-        </div>
-      </form>
+      <div style="width: 80%; margin-left: 10% ;" class="container p-5">
+
+        <form [formGroup]="addentiteForm" #myForm="ngForm" (ngSubmit)="addentite(); myForm.reset()">
+          <div class="row">
+            <div class="col-25">
+
+              <label for="pname">entite Name</label>
+            </div>
+            <div class="col-75">
+
+              <input class="form-control" type="text" id="pname" name="entitename" required placeholder="entite name.."
+                formControlName="entitename">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label for="wilayas">entite wilayas</label>
+            </div>
+            <div class="col-75">
+
+              <select id="wilayas" class="form-control" name="wilayas" formControlName="wilayas">
+                <option disabled>select one</option>
+                <option *ngFor="let entite_willaya of wilayats " value="{{entite_willaya}}"> {{entite_willaya}}
+                </option>
+              </select>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="mougattaa">entite mougattaa</label>
+            </div>
+            <div class="col-75">
+              <select id="mougattaa" class="form-control" name="mougattaa" formControlName="mougattaa">
+                <option disabled>select one</option>
+                <option *ngFor="let entite_mougattaa of mougats " value="{{entite_mougattaa}}"> {{entite_mougattaa}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+              <label for="type">entite type</label>
+            </div>
+            <div class="col-75">
+
+              <select id="type" name="type" formControlName="type">
+                <option disabled="disabled" style="background-color:rgb(183, 226, 243); color:#000000"><i>-select type
+                    d'entite-</i></option>
+                <option value="Cabinet">Cabinet</option>
+                <option value="Secrétariat Général">Secrétariat Général</option>
+                <option value="Projet">Projet</option>
+                <option value="Direction">Direction</option>
+                <option value="Ministre">Ministre</option>
+                <option value="Service">Service</option>
+                <option value="Coordination">Coordination</option>
+                <option value="Cellule">Cellule</option>
+                <option value="Inspection">Inspection</option>
+                <option value="Service Khademati">Service Khademati</option>
+                <option value="DTI">DTI</option>
+                <option value="SECRETAIRE DIRECTEUR ADJOINT DETI">SECRETAIRE DIRECTEUR ADJOINT DETI</option>
+                <option value="CHEF SERVICE MARCHE DTI">CHEF SERVICE MARCHE DTI</option>
+                <option value="DPC CHEF DIVISSION">DPC CHEF DIVISSION</option>
+                <option value="assistant">assistant</option>
+                <option value="DIVISION">DIVISION</option>
+                <option value="assistant de DPC">assistant de DPC</option>
+                <option value="مسؤول إداري">مسؤول إداري</option>
+                <option value="conseiller chargée de l'envirennement">conseiller chargée de l'envirennement</option>
+                <option value="DEPC">DEPC</option>
+                <option value="École info">École info</option>
+                <option value="مصلحةًالشؤون الطلابية">مصلحةًالشؤون الطلابية</option>
+                <option value="Dr des Etude et stage">Dr des Etude et stage</option>
+                <option value="Commissaire Adjoint">Commissaire Adjoint</option>
+                <option value="CHEF DIVISION">CHEF DIVISION</option>
+                <option value="Conseiller du PM">Conseiller du PM</option>
+                <option value="Chef Sece Labo">Chef Sece Labo</option>
+                <option value="DAAF">DAAF</option>
+                <option value="SERVICE DE LA COMPTABILITE">SERVICE DE LA COMPTABILITE</option>
+                <option value="Le Commissaire">Le Commissaire</option>
+                <option value="DIRECTEUR ADJOINT DETI">DIRECTEUR ADJOINT DETI</option>
+                <option value="DIRECTEUR DEI">DIRECTEUR DEI</option>
+                <option value="DETI CHEF SERVICE">DETI CHEF SERVICE</option>
+                <option value="DETI chef division">DETI chef division</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="affectation">entite affectation</label>
+            </div>
+            <div class="col-75">
+
+              <input class="form-control" type="text" id="" name="affectation" formControlName="affectation" required
+                placeholder="entite affectation..">
+
+              <select formControlName="affectation" class="form-control" value="">
+
+                <option disabled="disabled" selected="selected"
+                  style="background-color:rgb(183, 226, 243); color:#000000">
+                  <i>-Selectionner -</i>
+                </option>
+                <option>DSC</option>
+                <option>DAAS</option>
+                <option>MTNIMA/SG/SERVICE INFORMATIQUE</option>
+                <option>Inspection Interne
+                </option>
+                <option>Secrétariat central
+                </option>
+                <option>Chargé de Mission
+                </option>
+                <option>DR</option>
+                <option>Cabinet du Ministre
+                </option>
+                <option> IG</option>
+                <option>DDI</option>
+                <option>DAJ/ Service de la documentation et de la normalisation
+                </option>
+                <option>Service de la documentation et de la normalisation
+                </option>
+                <option>Service de Developpement
+                </option>
+                <option> Direction des Affaires Juridique</option>
+                <option>SG</option>
+                <option>INNOVATION</option>
+                <option> Conseiller Technique chargé de l'Interopérabilité</option>
+                <option>ONDULAIRE</option>
+                <option>conseiller</option>
+                <option>Sall de Conference
+                </option>
+                <option>DAFIM</option>
+                <option>CONSEILLER</option>
+                <option>DIRECTION DE L’INFORMATIQUE, DE LA DOCUMENTATION ET DE LA DEMATRIALISATION
+                </option>
+                <option>garde-corps ministre
+                </option>
+                <option>DACS</option>
+                <option>DIRECTION DE L'ENSEIGNEMENT FONDAMENTAL
+                </option>
+                <option>DRH, directeur
+                </option>
+
+              </select>
+
+
+
+            </div>
+
+          </div>
+
+
+          <div class="container">
+            <div class="row">
+
+              <button mat-raised-button type="submit" title="Add in Product List" style="width:30%; left:70%; ">
+                <mat-icon>add</mat-icon>
+                ADD
+              </button>
+
+
+              <button mat-raised-button type="reset" title="Cancel" style="width:30%; right:30%; ">
+                <mat-icon>cancel</mat-icon>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+        <label class="error-message">{{ errMessage }}</label>
+        <label class="successMessage">{{ successMessage }}</label>
+      </div>
+
+
+
     </div>
-
-
-
-
   </div>
-
-</div>
+</header>

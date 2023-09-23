@@ -43,7 +43,7 @@ public class JwtTokenFilter extends GenericFilterBean {
       // this is very important, since it guarantees the user is not authenticated at
       // all
       SecurityContextHolder.clearContext();
-      ((HttpServletResponse) response).sendError(ex.getHttpStatus().value(), ex.getMessage());
+      ((HttpServletResponse) response).sendError(ex.getHttpStatus().value(), "deidine mchnk "+ex.getMessage());
 
     }
   }

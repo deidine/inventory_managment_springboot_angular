@@ -16,7 +16,7 @@ input[type=text], select, textarea {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  resize: vertical;
+  resize: vertical;height: auto;
 }
 
 input[type=number]{

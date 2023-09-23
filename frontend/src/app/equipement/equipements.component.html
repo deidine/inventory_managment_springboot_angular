@@ -1,0 +1,174 @@
+<!-- Header Toolbar -->
+
+<header>
+
+
+  <!-- Central Containt -->
+  <div class="content-div">
+
+    <!-- SideBar List -->
+    <div>
+
+      <sidenavbar></sidenavbar>
+
+    </div>
+
+    <!-- Main Grid -->
+
+    <div class='content-card'>
+
+
+
+
+      <div class="content-div">
+
+
+        <h5 style="text-align: left">equipement List
+
+          <div *ngIf="addButton" style="float: right; position: unset; margin-top: 0%; 
+                  margin-right: 1%; ">
+            <button mat-raised-button (click)="onClickAddequipement()" matTooltip=" Want to add a new equipement ? "
+              title="right" aria-label="Button that displays a tooltip that can be programatically disabled">
+              <mat-icon>add</mat-icon>
+              Add equipement
+            </button>
+
+          </div>
+
+        </h5>
+        <hr class="hr-silver">
+
+
+
+
+
+        <!-- Mat Table for retailer list  -->
+        <!-- <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search"> -->
+        <div class="example-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+        </div>
+        <span class="mat-checkbox-label">
+          <input type="checkbox" value="etat" name="etat" class="checkbox-filter"
+            (change)="checkCheckBoxvalue($event)"> <span style="display:none">&nbsp;</span>etat 
+          
+          </span>
+        <span class="mat-checkbox-label">
+          <input type="checkbox" value="vendeur" name="vendeur" class="checkbox-filter"
+            (change)="checkCheckBoxvalue($event)"> <span style="display:none">&nbsp;</span>vendeur 
+          
+          </span>
+        <span class="mat-checkbox-label">
+          <input type="checkbox" value="type" name="type" class="checkbox-filter"
+            (change)="checkCheckBoxvalue($event)"> <span style="display:none">&nbsp;</span>type 
+          
+          </span>
+
+        <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="equipements"
+          style="width: 96%; margin: 2%; margin-bottom: 2%" class="mat-elevation-z8" matSort>
+          <ng-container matColumnDef="Id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>  <div>
+      <mat-form-field>
+  <input matInput class="form-field" [formControl]="nameFilter" placeholder="Name Filter">
+</mat-form-field>
+      </div> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.id}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="buro">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> buro</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.buro.numero}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="System_active">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> System active </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.systeme_active}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Modele">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Modele </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.modele}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="SiOrdinateur">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Systeme ordinateur </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.SiOrdinateur}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Reference </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.reference}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Etat">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>etat </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.etat}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Antivirus_active">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>antivirus_active </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.antivirus_active}} </mat-cell>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="Anne_aquisition">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>anne_aquisition </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.anne_aquisition}} </mat-cell>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="Vendeur">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>vendeur </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.vendeur}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Type">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.type}}</mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Systm_activ">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>systeme active</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.systeme_active}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit equipement </mat-header-cell>
+            <mat-cell (click)=editequipement(element) style="cursor: pointer" title="Edit equipement Details"
+              *matCellDef="let element">
+              <a>
+                <i class="material-icons">
+                  border_color
+                </i>
+              </a>
+              <!-- &nbsp; Edit equipement -->
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </table>
+        <mat-paginator #paginator [pageIndex]="0" [pageSize]="10" [pageSizeOptions]=[5,10] showFirstLastButtons="true">
+
+        </mat-paginator>
+
+
+        <div style="margin-top: 2%"> &nbsp; </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+</header>

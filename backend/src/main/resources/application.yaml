@@ -1,16 +1,27 @@
+
+
 server:
     port: 8080
  
 spring:
+# This is to instruct Spring Boot to initialize database schema.
+#   sql:
+#     init: 
+#       mode : always
+# # Specifying a different schema file location the folder under ressources folder
+#       schema-locations : classpath:sql/sqlfile.sql
+  # h2:
+  #   console:
+  #           enabled : true
 
   security:
     user:
       name: deidine
       password: deidine
-    # jwt:
-    #   token:
-    #     secret-key: secret-key
-    #     expire-length: 300000 # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
+    jwt:
+      token:
+        secret-key: secret-key
+        expire-length: 300000 # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
      
   jpa:
     properties:
@@ -23,9 +34,9 @@ spring:
               new_generator_mappings: false
 
 
-    hibernate:
-      ddl-auto: none #update,create
-      # ddl-auto: create-drop
+    hibernate: 
+      ddl-auto:  none #update,,drop,create-drop
+      # ddl-auto: create   #update,,drop,create-drop
     show-sql: true 
     database-platform: org.hibernate.dialect.MySQL5Dialect
   datasource:
@@ -41,7 +52,7 @@ security:
   jwt:
     token:
       secret-key: secret-key
-      expire-length: 300000 # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
+      expire-length: 86400000 #one day # 5 minutes duration by default: 5 minutes * 60 seconds * 1000 miliseconds
       
 UserController:
   signin: Authenticates user and returns its JWT token.

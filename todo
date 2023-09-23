@@ -1,0 +1,29 @@
+this url have other type pf endpint api https://github.com/tom-smith-okta/okta-api-center/
+
+il doit etre qu'on connait le person qui inserer l'equpement encore chaque un a une login 
+puis l'admin valide c'est donne en fin puis exporter en pdf pour chaque entite 
+
+departement ici c'est ministre 
+entite ici c'est une direction come direction du developement du secerute 
+chaque burro dans une direction puis les equipement on doit connaitre ou ce etait installer 
+alors la solution c'est au moment d'insertion d'eupement il ya une slect html qui contient les ids du buro
+dans le base de donnne avec les conditioin quon peux pas inser une id du buro alors qu'il se trouve dans
+une autre direction ou entite ou par devaut l'id insere automatiqument si on choisir select l'entite dans equipement
+
+admin doit inserer le usen donc on doit ajouter nouvelle champ pour le table appuser 
+entite et on doit specivier les roles d'etre role pour admin role pour validateur role pour rempliceur
+
+dans le home page on doit voire un grand tablaux comme l'origine tableaux qui contitent toute
+les information pour chaque equpement et par chaque role il varie cette table
+par exple pour le valudateur on doi ajouter un bouton qui contitent le status du equpement essqu et valide ou non
+est en meme temps le homepage du valudateur contient un champ qui presise que cette equipement est valide ou non
+en donnent lui la possibilite de modifier c'est information en condition que cette boutton n'pas etre valide 
+est dans l'autre cas impossible pour lui de modifier 
+est ca le valudateur peux faire le meme chause pour cette table en exportent sous forme exel et pdf
+
+le valudateur appartient a une departemnt il peux pas voire les information du autre departement 
+le valudateur c'est comme directeur du ressource humain
+le valudateur peut selectionner seulemt les line qui vas exporter en pdf 
+il peu chercher un equpement specifique
+
+     maladie de cnstration   <!-- aehd  -->

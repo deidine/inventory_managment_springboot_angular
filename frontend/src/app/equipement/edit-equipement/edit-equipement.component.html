@@ -1,0 +1,114 @@
+<!-- Header Toolbar -->
+
+<header> 
+
+<!-- Central Containt -->
+<div class="content-div">
+
+  <!-- SideBar List -->
+  <sidenavbar></sidenavbar>
+
+<!-- Main Grid -->
+
+  <div class='content-card' >
+
+  
+    <h5 style="text-align: left; margin-top: 3%"> Edit Equipement Details</h5>  
+    <hr class="hr-silver">
+
+   
+    <div >
+      <form class="edit-Equipement" name="editEquipementForm" #editEquipementForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="anne_aquisition">Equipement anne_aquisition</label>
+          <input id="anne_aquisition" type="text" class="form-control" name="anne_aquisition" ngModel #anne_aquisition="ngModel"
+              [(ngModel)]="equipement.anne_aquisition">
+      </div>
+
+        <div class="form-group">
+          <label for="antivirus_active">Equipement antivirus_active</label>
+          <input id="antivirus_active" type="text" class="form-control" name="antivirus_active" ngModel #antivirus_active="ngModel"
+              [(ngModel)]="equipement.antivirus_active">
+      </div>
+
+        <div class="form-group">
+          <label for="modele">Equipement modele</label>
+          <input id="modele" type="text" class="form-control" name="modele" ngModel #modele="ngModel"
+              [(ngModel)]="equipement.modele">
+      </div>
+      <div class="form-group">
+        <label for="etat">Equipement etat</label>
+        <input id="etat" type="text" class="form-control" name="etat" ngModel #etat="ngModel"
+            [(ngModel)]="equipement.etat">
+    </div>
+
+      <div class="form-group">
+        <label for="reference">Equipement reference</label>
+        <input id="reference" type="text" class="form-control" name="reference" ngModel #reference="ngModel"
+            [(ngModel)]="equipement.reference">
+    </div>
+
+      <div class="form-group">
+        <label for="systeme_active">Equipement systeme_active</label>
+        <input id="systeme_active" type="text" class="form-control" name="systeme_active" ngModel #systeme_active="ngModel"
+            [(ngModel)]="equipement.systeme_active">
+    </div>
+
+      <div class="form-group">
+        <label for="buro">Equipement buro</label>
+        <input id="buro" type="text" class="form-control" name="buro" ngModel #buro="ngModel"
+            [(ngModel)]="equipement.buro.numero">
+    </div>
+
+      <div class="form-group">
+        <label for="vendeur">Equipement vendeur</label>
+        <input id="vendeur" type="text" class="form-control" name="vendeur" ngModel #vendeur="ngModel"
+            [(ngModel)]="equipement.vendeur">
+    </div>
+
+      <div class="form-group">
+        <label for="SiOrdinateur">Equipement systeme Ordinateur</label>
+        <input id="SiOrdinateur" type="text" class="form-control" name="SiOrdinateur" ngModel #siOrdinateur="ngModel"
+            [(ngModel)]="equipement.siOrdinateur">
+    </div>
+    <div class="form-group">
+      <label for="type">Equipement type</label>
+      <input id="type" type="text" class="form-control" name="type" ngModel #type="ngModel"
+          [(ngModel)]="equipement.type">
+  </div>
+
+          <!-- <div class="form-group">
+              <label for="EquipementStatus">Status</label><br>
+              <input id="EquipementStatus" type="radio" checked="checked" name="EquipementStatus" value="active"
+                  ngModel #EquipementStatus="ngModel" [(ngModel)]="Equipement.EquipementStatus">Active<br>
+              <input id="EquipementStatus" type="radio"  name="EquipementStatus" value="inactive"
+                  ngModel #EquipementStatus="ngModel" [(ngModel)]="Equipement.EquipementStatus">Inactive<br>
+          </div>
+   -->
+         
+          <button mat-raised-button 
+                          class="btn btn-secondary side-button"
+                          title="Update Equipement Details"
+                          (click)="onClickUpdateEquipement()"
+                          aria-label="Button that displays a tooltip that can be programatically disabled"
+                         >
+                          <mat-icon >autorenew</mat-icon>                  
+                          Update Equipement Details    
+          </button>
+
+      </form>
+  </div>  
+    
+     
+  </div>
+
+</div>
+
+
+
+
+<!-- Mat Table for retailer list  -->
+
+
+
+</header>

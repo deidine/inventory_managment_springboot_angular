@@ -21,22 +21,6 @@ public class PersonnelleServiceImpl implements IPersonnelleService {
         this.repository = repository;
     }
 
-    // @Override
-    // public Entite save(Entite object)
-    // {
-    //     return repository.save(object);
-    // }
-
- 
-    // @Override
-    // public List<Entite> findAll()
-    // {
-    //     
-    // }
-    //  
-    
-   
-
     @Override
     public Personnelle save(Personnelle object) {
         // TODO Auto-generated method stub
@@ -48,25 +32,23 @@ public class PersonnelleServiceImpl implements IPersonnelleService {
         repository.delete(object);}
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
         // TODO Auto-generated method stub
        repository.deleteById(id);
    }
-
-//     @Override
-//     public Optional<Personnelle> read(Long id) {
-//   return repository.findAll(id);
-//     }
-
+ 
+    
     @Override
-    public List<Personnelle> findAll() {
-       return repository.findAll();  }
-
-    @Override
-    public Optional<Personnelle> read(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'read'");
+    public List<Personnelle> findAll() {  
+        return repository.findAll();}
+        
+        @Override
+        public Optional<Personnelle> read(Long id) {
+            // TODO Auto-generated method stub
+             return repository.findById(id);
     }
+
+ 
 }
 
 

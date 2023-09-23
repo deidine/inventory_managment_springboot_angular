@@ -1,3 +1,48 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+"vim.insertModeKeyBindings": [
+     {
+         "before": ["j", "j"],
+         "after": ["<esc>"]
+     }
+     ,
+{
+  "vim.leader": " ",
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.smartRelativeLine": true,
 }
+], 
+
+"vim.useCtrlKeys": true,
+    
+    "vim.normalModeKeyBindingsNonRecursive": [
+  {
+      "before": ["u"],
+      "commands": ["undo"]
+  },
+  {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+  },
+     {
+        "before": ["<"],
+        "commands" : ["tab"]
+    },
+    {
+        "before": [">"],
+        "commands" : ["outdent"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
+   
+    ]}
+                                
+ 
+ 

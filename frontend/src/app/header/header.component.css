@@ -1,10 +1,43 @@
-.header-toolbar{
-    top: 0%;
-    width: 100%; 
-    left: 0%; 
-    position: absolute;
+ mat-raised-button{
+    background: linear-gradient(purple, skyblue);
+}
+.companyName{
+    font-size: 150%;
+  }
+  
+  .mat-toolbar{
+  height: 7vh;
+  }
+  
+  div {
+    overflow: inherit;
+  }
+  
+  .mat-sidenav-container{
+  background-color: #f2f2f2;
+  min-height: 93vh !important;
   }
 
-  .toolbar-row-spacer{
+  a{
+    text-decoration: none;
+    font-size: 110%;
+    white-space: normal;
+  }
+  
+  button{
+    font-size: 110%;
+    min-width: min-content;
+  }
+    
+  .example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
     flex: 1 1 auto;
   }
+  /*
+  .mat-sidenav-content{
+      font-size: 200%;
+      text-align: center;
+  } */

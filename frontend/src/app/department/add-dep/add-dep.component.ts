@@ -11,7 +11,7 @@ import { Entite } from 'src/app/Entite/Entite';
 import { EntiteService } from 'src/app/Entite/services/entite.service';
 
 @Component({
-  selector: 'add-product',
+  selector: 'add-dep',
   templateUrl: './add-dep.component.html',
   styleUrls: ['./add-dep.component.css']
 })

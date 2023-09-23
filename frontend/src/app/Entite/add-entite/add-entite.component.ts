@@ -12,7 +12,8 @@ import { SharedServiceService } from '../services/shared-service.service';
 export class AddEntiteComponent implements OnInit {
 
   entite: Entite = new Entite();
-  
+  wilayats:any;
+  mougats:any;
   successMessage:string ="";
   errMessage: string ="";
 
@@ -22,12 +23,21 @@ export class AddEntiteComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.entiteService.getWillayat().subscribe(data => {
+      this.wilayats=data
+      console.log(this.wilayats)
+     })
+
+     this.entiteService.getMougatta().subscribe(data2 => {
+      this.mougats=data2
+      console.log(this.mougats)
+     })
   }
 
   addentiteForm=new FormGroup({
     
     entitename:new FormControl('',[Validators.required]),
-    type:new FormControl('',[Validators.required]),
+    type:new FormControl('-select type d\'entite-',[Validators.required]),
     mougattaa: new FormControl('',[Validators.required]),
     wilayas: new FormControl('',[Validators.required]),
     affectation: new FormControl('',[Validators.required]),
@@ -63,7 +73,7 @@ export class AddEntiteComponent implements OnInit {
 
     console.log(this.entite);
 
- 
+
       this.entiteService.addEntite(this.entite).subscribe(data => {
        
         if(data)

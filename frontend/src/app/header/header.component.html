@@ -1,28 +1,157 @@
-<mat-toolbar style="background: linear-gradient( #2b74bd ,rgb(183, 226, 243) )" class="header-toolbar">
+<!-- <testpage></testpage> -->
 
-    <mat-toolbar-row>
-      <!-- <h6>DiMS</h6> -->
-      
-      <img height="90%" routerLink="" title="DiMS" src="assets/images/Dims cropped.png">
-      
-      <span class="toolbar-row-spacer"></span>
-      
-      <mat-icon class="toolbar-row-icon" 
-                aria-hidden="false"
-                (click)="onClickProfile()"
-                title="My Profile"
-                style="cursor: pointer;">account_circle</mat-icon>
-                
-                <p (click)="onClickProfile()" title="My Profile" style="cursor: pointer; margin-top: 1%; margin-right: 1%">{{userName}}</p>    
-      
-      <mat-icon class="toolbar-row-icon" 
-                aria-hidden="false" 
-                title="Log-out"
-                (click)="onClickLogout()"
-                style="cursor: pointer;">power_settings_new</mat-icon>
-    
-    </mat-toolbar-row>
-  
-  </mat-toolbar>
 
- 
+<mat-toolbar color="primary">
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <a mat-button class="companyName" routerLink="/">
+    <span>Site name</span>
+  </a>
+  <span class="example-spacer"></span>
+
+  <div fxShow="true" fxHide.lt-md="true">
+    <app-auto-open-menu>
+      <div trigger mat-raised-button aria-label="Button that displays a tooltip that can be programatically disabled"
+        class="btn btn-secondary side-button">
+        personnelle<mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      <div content>
+
+        <button routerLink="/add-personnel" mat-menu-item><mat-icon>add</mat-icon>ajouter personnelle</button>
+        <button routerLink="/personnelle" mat-menu-item> <mat-icon>details</mat-icon>afficher les
+          personnelle</button>
+
+      </div>
+    </app-auto-open-menu>
+  </div>
+
+  <div style="margin-left:10px;"></div>
+
+  <div fxShow="true" fxHide.lt-md="true">
+    <app-auto-open-menu>
+      <div trigger mat-raised-button aria-label="Button that displays a tooltip that can be programatically disabled"
+        class="btn btn-secondary side-button">
+        Departement<mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      <div content>
+
+        <button routerLink="/add-dep" mat-menu-item><mat-icon>add</mat-icon>ajouter Departement</button>
+        <button routerLink="/department" mat-menu-item> <mat-icon>details</mat-icon>afficher les
+          Departements</button>
+
+      </div>
+    </app-auto-open-menu>
+  </div>
+
+  <div style="margin-left:10px;"></div>
+  <div fxShow="true" fxHide.lt-md="true">
+    <app-auto-open-menu>
+      <div trigger mat-raised-button aria-label="Button that displays a tooltip that can be programatically disabled"
+        class="btn btn-secondary side-button">Equipement<mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      <div content>
+
+        <button routerLink="/add-equipment" mat-menu-item><mat-icon>add</mat-icon>ajouter Equipement</button>
+        <button routerLink="/equipement" mat-menu-item> <mat-icon>details</mat-icon>afficher les
+          Equipement</button>
+      </div>
+    </app-auto-open-menu>
+  </div>
+  <div style="margin-left:10px;"></div>
+  <div fxShow="true" fxHide.lt-md="true">
+    <app-auto-open-menu>
+      <div trigger mat-raised-button aria-label="Button that displays a tooltip that can be programatically disabled"
+        class="btn btn-secondary side-button">Entite<mat-icon>arrow_drop_down</mat-icon>
+      </div>
+      <div content>
+
+        <button routerLink="/addentite" mat-menu-item><mat-icon>add</mat-icon>ajouter Entite</button>
+        <button routerLink="/getallentite" mat-menu-item> <mat-icon>details</mat-icon>afficher les
+          Entite</button>
+
+      </div>
+    </app-auto-open-menu>
+  </div>
+
+
+
+  <span class="toolbar-row-spacer"></span>
+  <div style="margin-left:10px;"></div>
+  <app-auto-open-menu>
+    <div trigger>Profile<mat-icon>arrow_drop_down</mat-icon></div>
+    <div content>
+
+      <button mat-menu-item class="toolbar-row-icon" aria-hidden="false" style="cursor: pointer;" title="Log-out"
+        routerLink="/requests" mat-menu-item>Logout
+        <mat-icon>power_settings_new</mat-icon></button>
+
+      <p mat-menu-item routerLink="/requests" title="My Profile"
+        style="cursor: pointer; margin-top: 1%; margin-right: 1%">
+        <mat-icon class="toolbar-row-icon" aria-hidden="false" routerLink="/requests" title="My Profile"
+          style="cursor: pointer;">account_circle</mat-icon>
+        {{userName}}
+      </p>
+
+    </div>
+  </app-auto-open-menu>
+
+
+
+</mat-toolbar>
+
+
+
+<mat-sidenav-container fxFlexFill class="example-container">
+
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="side" class="mat-elevation-z8" opened="false"
+    fxHide.gt-sm="true">
+
+    <mat-nav-list>
+      <!-- <a mat-list-item class="menu-button" href="#">Link 1</a>
+            <a mat-list-item href="#">Link 2</a>
+            <a mat-list-item href="/add-dep">Link 3</a> -->
+      <button routerLink="/add-buro" mat-menu-item><mat-icon>add</mat-icon>ajouter buo</button>
+      <button routerLink="/register" mat-menu-item><mat-icon>add</mat-icon>signup </button>
+      <button routerLink="/add-etage" mat-menu-item><mat-icon>add</mat-icon>ajouter etage</button>
+
+
+      <button routerLink="/add-dep" mat-menu-item><mat-icon>add</mat-icon>ajouter Departement</button>
+      <button routerLink="/add-equipment" mat-menu-item><mat-icon>add</mat-icon>ajouter Equipement</button>
+      <button routerLink="/addentite" mat-menu-item><mat-icon>add</mat-icon>ajouter Entite</button>
+
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <!-- <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Q&A</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>language</mat-icon>
+            <span>Language</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>money</mat-icon>
+            <span>Payment</span>
+        </button> -->
+
+    <!-- </div> -->
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <ng-content>
+        <!-- here it will render the page that is under the nav bar so without this tag it will not show enything 
+in the toolbar -->
+
+      </ng-content>
+      <!-- <router-outlet>
+            </router-outlet> -->
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

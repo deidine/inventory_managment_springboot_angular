@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
 import net.javaguides.springboot.model.Department;
+import net.javaguides.springboot.repository.IDepartmentRepository;
 import net.javaguides.springboot.dto.UserResponseDTO;
 import net.javaguides.springboot.exception.ResourceNotFoundException;
 import net.javaguides.springboot.factory.DepartmentFactory;
@@ -36,7 +38,7 @@ import java.util.List;
 public class DepartmentController {
 
     private final IDepartmentService departmentService;
-
+@Autowired IDepartmentRepository repos;
     @Autowired
     public DepartmentController(IDepartmentService departmentService) {
         this.departmentService = departmentService;
@@ -44,11 +46,9 @@ public class DepartmentController {
     // @CrossOrigin(origins = "http://localhost:4200")
 
     @PostMapping(value = "save", produces = { "application/json" })
-    // @PreAuthorize("hasRole('ROLE_CLIENT')")
-    // @ApiOperation(value = "${DepartmentController.save}", authorizations = {
-    // @Authorization(value = "secret-key") })
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
 
-    public ResponseEntity<Department> save(@RequestBody Department department,@RequestHeader HttpHeaders  header) {
+    public ResponseEntity<Department> save(@RequestBody Department department, @RequestHeader HttpHeaders header) {
         log.info("Save Request: ", department);
 
         Department ValidateDepartment;
@@ -75,7 +75,7 @@ public class DepartmentController {
 
     @GetMapping("find-all")
     public ResponseEntity<List<Department>> findAll() {
-        List<Department> departmentLists = this.departmentService.findAll();
+        List<Department> departmentLists = this.repos.findAll(Sort.by("departmentId").ascending());
         return ResponseEntity.ok(departmentLists);
     }
 
@@ -100,7 +100,7 @@ public class DepartmentController {
         department.setDepartmentName(departmentDetails.getDepartmentName());
         department.setDepartmentTitre(departmentDetails.getDepartmentTitre());
         department.setDepartmentUrl(departmentDetails.getDepartmentUrl());
-
+        department.setEntite(department.getEntite());
         Department updatedDepartment = departmentService.save(department);
         return ResponseEntity.ok(updatedDepartment);
     }

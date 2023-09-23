@@ -47,8 +47,8 @@
 
                 // Combine both video/audio stream with MediaStream object
                 let combine = new MediaStream(
-                    [...e.getTracks(), ...audio.getTracks()])       //will track both the screen and the audio
-                    // [...e.getTracks() ])     //if you want only the video without the microphone 
+                    // [...e.getTracks(), ...audio.getTracks()])       //will track both the screen and the audio
+                    [...e.getTracks() ])     //if you want only the video without the microphone 
 
                 /* Record the captured mediastream
                 with MediaRecorder constructor */

@@ -1,6 +1,6 @@
 <!-- Header Toolbar -->
 
-<header></header>
+<header> 
 
 <!-- Central Containt -->
 <div class="content-div">
@@ -11,7 +11,7 @@
     <!-- Main Grid -->
 
     <div class='content-card'>
-        
+
         <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
         <hr class="hr-silver">
 
@@ -25,22 +25,29 @@
                 <div class="form-group">
 
                     <label> departmentName</label>
-                    <input type="text" ngModel #departmentName="ngModel" name="departmentName" id="departmentName" [(ngModel)]="department.departmentName"
-                        class="form-control">
+                    <input type="text" ngModel #departmentName="ngModel" name="departmentName" id="departmentName"
+                        [(ngModel)]="department.departmentName" class="form-control">
 
                 </div>
                 <div class="form-group">
 
                     <label>Product departmentUrl</label>
-                    <input type="text" ngModel #departmentUrl="ngModel" name="departmentUrl" id="departmentUrl" [(ngModel)]="department.departmentUrl"
-                        class="form-control">
+                    <input type="text" ngModel #departmentUrl="ngModel" name="departmentUrl" id="departmentUrl"
+                        [(ngModel)]="department.departmentUrl" class="form-control">
 
                 </div>
                 <div class="form-group">
 
                     <label> departmentTitre</label>
-                    <input type="text" name="departmentTitre" ngModel #departmentTitre="ngModel" [(ngModel)]="department.departmentTitre"
-                        class="form-control">
+                    <input type="text" name="departmentTitre" ngModel #departmentTitre="ngModel"
+                        [(ngModel)]="department.departmentTitre" class="form-control">
+
+                </div>
+                <div class="form-group">
+
+                    <label> departmentTitre</label>
+                    <input type="text" name="departmeTitre" ngModel #departmeTitre="ngModel"
+                        [(ngModel)]="department.departmenTitre" class="form-control">
 
                 </div>
                 <!-- 
@@ -75,4 +82,4 @@
 
     </div>
 
-</div>
+</div></header>

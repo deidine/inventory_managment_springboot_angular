@@ -1,6 +1,6 @@
 <!-- Header Toolbar -->
 
-<header></header>
+<header> 
 
 
 <!-- Central Containt -->
@@ -38,8 +38,7 @@
       </h5>
       <hr class="hr-silver">
 
-
-{{deidine}}
+ 
       <!-- Mat Table for retailer list  -->
 
       <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="departments"
@@ -69,7 +68,7 @@
         </ng-container>
         <ng-container matColumnDef="departmentEntite">
           <mat-header-cell *matHeaderCellDef mat-sort-header> department entite </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.entite.entiteId}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.entite.entiteName}} </mat-cell>
         </ng-container>
 
 
@@ -92,9 +91,8 @@
           <mat-cell (click)=deletedepartment(element) style="cursor: pointer" title="delete department  "
             *matCellDef="let element">
             <a>
-              <i class="material-icons delete">
-                border_color
-              </i>
+              <mat-icon>delete</mat-icon>
+
             </a>
             <!-- &nbsp; delete department -->
           </mat-cell>
@@ -117,4 +115,4 @@
 
   </div>
 
-</div>
+</div></header>

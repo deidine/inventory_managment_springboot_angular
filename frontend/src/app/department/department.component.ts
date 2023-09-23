@@ -6,7 +6,7 @@ import { Departement } from '../models/department';
 import { DepartementService } from '../services/department.service';
 import { UserProfile } from '../models/UserModels';
 import { LoginCheckService } from '../login/services/login-check.service';
- 
+
 @Component({
   selector: 'department',
   templateUrl: './department.component.html',
@@ -47,11 +47,11 @@ export class departmentComponent implements OnInit {
   ngOnInit() {
     // if(localStorage.getItem("currentUserRole")==`["ROLE_CLIENT"]`){
 
-      this.departmentervice.getDepartements().subscribe(
-        response => {
-          
-          this.department = response;
-          this.deidine = this.department.entite;
+    this.departmentervice.getDepartements().subscribe(
+      response => {
+
+        this.department = response;
+        this.deidine = this.department.entite;
         this.departments = new MatTableDataSource(this.department);
         this.department.sort = this.sort;
         this.length = response.length;
@@ -103,37 +103,37 @@ export class departmentComponent implements OnInit {
 
   }
 
-  displayedColumns: string[] = ['departmentName','departmentId',  'departmentUrl' , 'departmentTitre' , 'departmentEntite' ,  'edit','delete'];
+  displayedColumns: string[] = ['departmentName', 'departmentId', 'departmentUrl', 'departmentTitre', 'departmentEntite', 'edit', 'delete'];
 
-  editdepartment(element){
+  editdepartment(element) {
     let departmentId = element.departmentId;
 
     console.log(departmentId);
 
     // this.router.navigate(['/edit-department',element])
-    this.router.navigate(['/edit-department'],{queryParams:{departmentId:departmentId}})
+    this.router.navigate(['/edit-department'], { queryParams: { departmentId: departmentId } })
   }
 
-  deletedepartment(element){
+  deletedepartment(element) {
     let departmentId = element.departmentId;
-    this.departmentervice.deleteDepartment(departmentId).subscribe( data => {
+    this.departmentervice.deleteDepartment(departmentId).subscribe(data => {
       console.log(data);
       this.router.navigate(['/department']);
       alert("deleted")
 
       // this.getEmployees();
     },
-    err=>alert("not deleted"))
+      err => alert("not deleted"))
     console.log(departmentId);
- this.reloadPage()
+    this.reloadPage()
   }
 
 
-  handleUpdate(resp){
+  handleUpdate(resp) {
     console.log("Updated Product");
 
     this.snackBar.open("Product Updated", "Close", {
-      duration: 4000,verticalPosition: 'top',panelClass: ['green-snackbar']
+      duration: 4000, verticalPosition: 'top', panelClass: ['green-snackbar']
     });
 
     this.departmentervice.getDepartements().subscribe(response => this.handle(response));

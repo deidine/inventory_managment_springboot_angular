@@ -13,5 +13,5 @@ import net.javaguides.springboot.service.IService;
 
 public interface IPersonnelleService extends IService<Personnelle, Long>
 {
-    void deleteById(String id);
+    void deleteById(Long id);
 }

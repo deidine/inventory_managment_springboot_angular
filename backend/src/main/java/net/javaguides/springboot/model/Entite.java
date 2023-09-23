@@ -42,7 +42,7 @@ import com.google.common.collect.Table.Cell;
 // @JsonIgnoreProperties(ignoreUnknown = true,allowSetters = true)
 
 public class Entite implements Serializable {
-    static final long serialVersionUID = 3L;
+    static final long serialVersionUID = 4L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int entiteId;
@@ -51,7 +51,13 @@ public class Entite implements Serializable {
     private String entiteName;
     @NotNull
     @Size(max = 100)
-    private String affectation, Wilayas, type, Mougattaa;
+    private String affectation,   type;
+	@Enumerated(EnumType.ORDINAL)
+    
+  private City Wilayas;
+  	@Enumerated(EnumType.ORDINAL)
+    
+  private City2 Mougattaa;
     // @JsonBackReference
     // @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "entite", fetch = FetchType.LAZY,cascade = CascadeType.ALL)// cascade = CascadeType.MERGE)
@@ -62,7 +68,12 @@ public class Entite implements Serializable {
     // )
     // ( cascade = CascadeType.REMOVE)
     private Set<Department> departments;
+    @JsonIgnore
+    // @OneToOne( optional=true)
+	@OneToMany(mappedBy = "entite", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 
+     //, unique=true, nullable=false, updatable=false)
+ private Set<Buro> buro;
     // private Department department;
     protected Entite() {
         departments = new HashSet<>();

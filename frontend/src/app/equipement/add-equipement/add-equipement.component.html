@@ -1,0 +1,231 @@
+<!-- Header Toolbar -->
+
+<header>
+
+    <!-- Central Containt -->
+    <div class="content-div">
+
+        <!-- SideBar List -->
+        <sidenavbar></sidenavbar>
+
+        <!-- Main Grid -->
+
+        <div class='content-card'>
+
+            <h5 style="text-align: left; margin-top: 5%"> Add New Equipement</h5>
+            <hr class="hr-silver">
+
+
+            <div style="width: 80%; margin-left: 10% ;">
+
+
+                <form [formGroup]="addEquipementForm" #myForm="ngForm" (ngSubmit)="onSubmit()" style="margin-top: 2%">
+
+                    <div class="form-group">
+
+                        <label>Equipement vendeur</label>
+                        <input type="text" [class.is-invalid]="addEquipementForm.get('vendeur').invalid
+                                        && addEquipementForm.get('vendeur').touched"
+                            [class.is-valid]="addEquipementForm.get('vendeur').valid" formControlName="vendeur"
+                            class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('vendeur').valid
+                                              || addEquipementForm.get('vendeur').untouched">
+                            Invalid name </small>
+
+                    </div>
+                    <div class="form-group">
+                        <label>antivirus_active</label> &nbsp; &nbsp;
+
+                        <select formControlName="antivirus_active" class="form-control" value="">
+
+                            <option disabled="disabled" selected="selected"
+                                style="background-color:rgb(183, 226, 243); color:#000000">
+                                <i>-Selectionner -</i>
+                            </option>
+                            <option>Oui</option>
+                            <option>Non</option>
+
+                        </select>
+
+
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('antivirus_active').valid
+                                                  || addEquipementForm.get('antivirus_active').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>anne_aquisition</label>
+                        <input type="date" [class.is-invalid]="addEquipementForm.get('anne_aquisition').invalid
+
+                                            && addEquipementForm.get('anne_aquisition').touched"
+                            [class.is-valid]="addEquipementForm.get('anne_aquisition').valid"
+                            oninput="validity.valid||(value='');" formControlName="anne_aquisition"
+                            class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('anne_aquisition').valid
+                                                  || addEquipementForm.get('anne_aquisition').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>etat d'equipement </label>
+                        <select formControlName="etat" class="form-control" value="">
+
+                            <option disabled="disabled" selected="selected"
+                                style="background-color:rgb(183, 226, 243); color:#000000">
+                                <i>-Selectionner un element -</i>
+                            </option>
+                            <option>En marche</option>
+                            <option>Non utilisé</option>
+
+                            <option>En panne</option>
+                        </select>
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('etat').valid
+                                                  || addEquipementForm.get('etat').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+
+                    <!-- <div class="form-group">
+
+                        <label>Systeme Ordinateur</label>
+                        <input type="text" [class.is-invalid]="addEquipementForm.get('SiOrdinateur').invalid
+                                            && addEquipementForm.get('SiOrdinateur').touched"
+                            [class.is-valid]="addEquipementForm.get('SiOrdinateur').valid"
+                            oninput="validity.valid||(value='');" formControlName="SiOrdinateur" class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('SiOrdinateur').valid
+                                                  || addEquipementForm.get('SiOrdinateur').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div> -->
+
+                    <div class="form-group">
+
+                        <label>reference</label>
+                        <input type="text" [class.is-invalid]="addEquipementForm.get('reference').invalid
+                                            && addEquipementForm.get('reference').touched"
+                            [class.is-valid]="addEquipementForm.get('reference').valid"
+                            oninput="validity.valid||(value='');" formControlName="reference" class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('reference').valid
+                                                  || addEquipementForm.get('reference').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Equipement type </label>
+                        <input type="text" [class.is-invalid]="addEquipementForm.get('type').invalid
+                                            && addEquipementForm.get('type').touched"
+                            [class.is-valid]="addEquipementForm.get('type').valid" formControlName="type"
+                            class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('type').valid
+                                                  || addEquipementForm.get('type').untouched">
+                            Please Enter correct status </small>
+
+                    </div>
+                    <div class="form-group">
+
+                        <label> Si du ordinateur</label>
+                        <select formControlName="SiOrdinateur" class="form-control" value="">
+
+                            <option disabled="disabled" selected="selected"
+                                style="background-color:rgb(183, 226, 243); color:#000000">
+                                <i>-Selectionner -</i>
+                            </option>
+                            <option>Windows</option>
+                            <option>MAC</option>
+                            <option>Windows Server 2016 64 bits</option>
+
+                            <option>Windows 10</option>
+                            <option>Windows 11</option>
+                            <option>Windows 12</option>
+                            <option>Windows 7</option>
+                            <option>Windows 8</option>
+                            <option>Windows XP</option>
+                            <option>Lunix</option>
+
+                        </select>
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('SiOrdinateur').valid
+                                                  || addEquipementForm.get('SiOrdinateur').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+                    <div class="form-group">
+                        <label>numero du buro</label>
+                        <select id="buro_numero" class="form-control" name="buro_numero" formControlName="buro_numero">
+                            <option disabled>select one</option>
+                            <option *ngFor="let buro of buroList " value="{{buro.id}}">
+                                {{buro.id}}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>modele</label>
+                        <input type="text" [class.is-invalid]="addEquipementForm.get('modele').invalid
+                                            && addEquipementForm.get('modele').touched"
+                            [class.is-valid]="addEquipementForm.get('modele').valid"
+                            oninput="validity.valid||(value='');" formControlName="modele" class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('modele').valid
+                                                  || addEquipementForm.get('modele').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>systeme_active</label>
+                        <select formControlName="systeme_active" class="form-control" value="">
+
+                            <option disabled="disabled" selected="selected"
+                                style="background-color:rgb(183, 226, 243); color:#000000">
+                                <i>-Selectionner -</i>
+                            </option>
+                            <option>Oui</option>
+                            <option>Non</option>
+
+                        </select>
+
+                        <small class="text-danger" [class.d-none]="addEquipementForm.get('systeme_active').valid
+                                                      || addEquipementForm.get('systeme_active').untouched">
+                            Please Enter correct cette problleme </small>
+
+                    </div>
+
+                    <button mat-raised-button type="submit" title="Add in Equipement List"
+                        style="width:30%; left:10%; margin-right: 20%; ">
+                        <mat-icon>add</mat-icon>
+                        ADD
+                    </button>
+
+                    <button mat-raised-button type="submit" title="Cancel" (click)="onClickCancel()"
+                        style="width:30%; left:10%; ">
+                        <mat-icon>cancel</mat-icon>
+                        Cancel
+                    </button>
+
+                </form>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</header>

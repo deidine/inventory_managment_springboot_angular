@@ -28,7 +28,7 @@ public class EntiteServiceImpl implements IEntiteService {
     @Override
     public Optional<Entite> read(Long id)
     {
-        return repository.findById(id);
+        return null;//repository.findById(id);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class EntiteServiceImpl implements IEntiteService {
     }
 
     @Override
-    public void deleteById(Long EntiteId)
+    public void deleteById(Integer EntiteId)
     {
         repository.deleteById(EntiteId);
     }

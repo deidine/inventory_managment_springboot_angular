@@ -24,6 +24,12 @@
 .card-div{
   margin-top: 6.5%;
 }
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
 
 .content-div{
   margin-top: 4.7%;

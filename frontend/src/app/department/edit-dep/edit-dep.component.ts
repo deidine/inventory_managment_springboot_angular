@@ -7,6 +7,7 @@ import { DepartementService } from '../../services/department.service';
 
 import { UserProfile } from 'src/app/models/UserModels';
 import { LoginCheckService } from 'src/app/login/services/login-check.service';
+import { EntiteService } from 'src/app/Entite/services/entite.service';
 
 @Component({
   selector: 'edit-product',
@@ -16,6 +17,7 @@ import { LoginCheckService } from 'src/app/login/services/login-check.service';
 export class EditDepComponent implements OnInit {
 
   public department: Departement = new Departement();
+  entiteList:any;
 
   public userName = localStorage.getItem("currentUserName");
   id: number;
@@ -24,19 +26,25 @@ export class EditDepComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private router: Router, private route: ActivatedRoute,
-
+private entiteService: EntiteService,
     private userProfileService: LoginCheckService,
     private departmentService: DepartementService,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() { 
+      this.entiteService.getAllEntites().subscribe(data => {
+        this.entiteList = data;
+        
+      });
+ 
     // this.id = this.route.snapshot.params['departmentId'];
 this.id=this.route.queryParams['getValue']()['departmentId']
     this.departmentService.getDepartmentById(this.id).subscribe(
       resp => {
         //this.handle(response)
-        this.department.departmentId = resp.departmentId;
         this.department.departmentName = resp.departmentName;
+        this.department.departmentId = resp.departmentId;
+        this.department.entite = resp.entite;
         this.department.departmentTitre= resp.departmentTitre;
         this.department.departmentUrl = resp.departmentUrl;
       }
@@ -81,13 +89,23 @@ this.id=this.route.queryParams['getValue']()['departmentId']
   }
   public stringRegex: RegExp = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
   public costRegex: RegExp = /^[0-9]*$/;
-
- 
+  
+  updateDepForm : FormGroup = this.fb.group({
+    departmentUrl: ['',[Validators.required,Validators.pattern(this.stringRegex)]],
+    departmentName : ['',[Validators.required,Validators.pattern(this.stringRegex)]],
+    entiteName : ['',[Validators.required ]],
+    departmentTitre : ['',[Validators.required,Validators.pattern(this.stringRegex)]] 
+  });
+  
+  get f() { return this.updateDepForm.controls; }
+  
   onSubmit() {
+    // this.department.entite.entiteName=this.f.entiteName.value
+    alert(this.f.entiteName.value)
     this.departmentService.updateDepartement(this.department,this.id).subscribe(
       asd=>{
-        this.router.navigateByUrl('department')
-    
+        // this.router.navigateByUrl('department')
+        alert(this.department.entite.entiteName)
   }
     ,err=> alert(err+"error")
     );
@@ -100,18 +118,14 @@ this.id=this.route.queryParams['getValue']()['departmentId']
   }
 
  
- 
+  
+  
   onClickCancel() {
     this.router.navigate(['/departments']);
   }
   reloadPage(): void {
     window.location.reload();
   }
-
-  updateDepForm : FormGroup = this.fb.group({
-    departmentName : ['',[Validators.required,Validators.pattern(this.stringRegex)]],
-    departmentUrl: ['',[Validators.required,Validators.pattern(this.stringRegex)]],
-    departmentTitre : ['',[Validators.required,Validators.pattern(this.stringRegex)]] 
-  });
+  
 
 }

@@ -1,3 +1,4 @@
+import { MatSnackBar, MatTableDataSource, MatPaginator, Sort, MatSort } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,18 +15,19 @@ import { UnSuccessfulDialogComponent } from '../un-successful-dialog/un-successf
   styleUrls: ['./get-all-entites.component.css']
 })
 export class GetAllentitesComponent implements OnInit {
-
- entiteList:any;
+ 
  entite:any;
 
   constructor(private entiteService: EntiteService,public dialog: MatDialog, private sharedServices: SharedServiceService, private routerService:RouterService) { }
 
   ngOnInit(): void {
     this.entiteService.getAllEntites().subscribe(data => {
-      this.entiteList = data;
+ 
+     this.entiteList  = new MatTableDataSource(data);
       
     });
   }
+  public entiteList: MatTableDataSource<any>;
 
   deleteentite(entiteId: string){
 
@@ -56,6 +58,7 @@ export class GetAllentitesComponent implements OnInit {
     this.sharedServices.setdialogcontent("entite Deleted Successfully !!");
     this.dialog.open(SuccessfulDialogComponent);
   }
+  displayedColumns: string[] = ['entiteName', 'entiteId', 'affectation', 'type' ,'edit', 'delete'];
 
   openunSuccessfulDialog() {
     this.sharedServices.setdialogtitle("Unsuccessfull");

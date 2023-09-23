@@ -46,9 +46,12 @@ public class Department {
     @Column(name = "department_titre")
     private String departmentTitre;
     // @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
-    @ManyToOne
+    // @ManyToOne
     // @JsonIgnore
     // @JsonManagedReference
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+
     private Entite entite;
 
     public Department() {

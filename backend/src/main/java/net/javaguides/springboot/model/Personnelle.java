@@ -9,11 +9,16 @@ ADP 3 Assignment Group1
 
 import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Objects;
 
@@ -34,7 +39,10 @@ public class Personnelle {
 
   @Column(unique = true)
   String Email;
-  private int id_bur;
+  @ManyToOne(cascade = CascadeType.ALL)
+ @OnDelete(action = OnDeleteAction.CASCADE)
+ 
+  private Buro buro;
 
   protected Personnelle() {
   }

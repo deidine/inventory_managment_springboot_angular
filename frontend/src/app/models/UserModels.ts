@@ -1,16 +1,4 @@
-export class UserDetails{
-
-    userName: string;
-    email: string;
-    contactNo: string;
-    address: string;
-    status: string;
-    area: string;
-    
-}
-// {"id":"1","username":"deidine",
-// "password":"$2a$12$W7ydtmGFt0PVHeu2UXud1.Pr2/8ubz9BFHeCJrwceP4rPS65ufWP6",
-// "appUserRoles":"[ROLE_ADMIN]"}
+ 
 export class UserProfile{
     username: string;
     password: string;
@@ -23,15 +11,6 @@ export class UserProfile{
     
 }
 
-export class Personnelle {
-    telephone: number;
-    nom: string;
-    role_systm: string;
-    fn_dans_entite: string;
-    id_bur: number;
-    email: string;
-  }
-  
 
 export class RegisterUser{
     public userName: string;

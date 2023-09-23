@@ -49,9 +49,27 @@ UserToken
       )
     });
   }
+  
+  getWillayat(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiURL}/entite/cities`,{
+      headers:new HttpHeaders(
+        {
+          'Authorization' : `Bearer ${localStorage.getItem('UserToken')}`
+        }
+      )
+    });
+  }  getMougatta(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiURL}/entite/mougatta`,{
+      headers:new HttpHeaders(
+        {
+          'Authorization' : `Bearer ${localStorage.getItem('UserToken')}`
+        }
+      )
+    });
+  }
 
   deleteEntite(EntiteId: any): Observable<any> {
-    return this.httpClient.delete<any>(`${environment.apiURL}/entite/deleteEntite/${EntiteId}`,{
+    return this.httpClient.delete<any>(`${environment.apiURL}/entite/delete/${EntiteId}`,{
       headers:new HttpHeaders(
         {
           'Authorization' : `Bearer ${localStorage.getItem('UserToken')}`

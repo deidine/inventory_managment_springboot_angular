@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -45,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/users/signin").permitAll()//
         .antMatchers("/users/signup").permitAll()//
         .antMatchers("/users/**").permitAll()//
-        // .antMatchers(HttpMethod.POST, "/**/department/**").hasRole("ADMIN")
+        .antMatchers(HttpMethod.POST, "/**/department/**").hasRole("CLIENT")
         .antMatchers("/h2-console/**/**").permitAll()
         // Disallow everything else..
         .anyRequest().authenticated();
@@ -69,16 +70,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // Allow swagger to be accessed without authentication
     web.ignoring().antMatchers("/v2/api-docs")//
         .antMatchers("/swagger-resources/**")//
-        .antMatchers("/swagger-ui.html")//
+        .antMatchers("/swagger-ui")//
         .antMatchers("/configuration/**")//
         .antMatchers("/webjars/**")//
         .antMatchers("/public")
-        .antMatchers("/api/personnelle/**")
-        // .antMatchers("/api/department/update/**")
+        .antMatchers("/api/department/**")
+        .antMatchers("/api/equipement/**")
+          .antMatchers("/api/personnelle/**")
 
-        // .antMatchers("/api/department/**")
-        // .antMatchers("/api/entite/**")
+ .antMatchers("/api/entite/**")
 
+
+        .antMatchers("/api/etage/**")
+        .antMatchers("/api/buro/**")
         // Un-secure H2 Database (for testing purposes, H2 console shouldn't be
         // unprotected in production)
         .and()

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { AuthenticatorService } from './login/services/authenticator.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,9 @@ import { AuthenticatorService } from './login/services/authenticator.service';
 export class AppComponent {
   title = 'dims';
 
+  openedSubject = new Subject<boolean>();
 
+  @HostListener('click', ['$event']) clickedInside($event) {
+      this.openedSubject.next(false);
+  }
 }

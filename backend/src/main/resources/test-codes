@@ -1,0 +1,42 @@
+
+@Repository
+public interface AuthorRepository extends CrudRepository<Author, Long> {
+	
+	@Query("SELECT new com.manning.sbip.ch03.dto.AuthorCourseDto(c.id, a.name, c.name, c.description) from AUTHOR a, COURSES c, AUTHORS_COURSES ac where a.id = ac.authorId and c.id=ac.courseId and ac.authorId=?1")
+	Iterable<AuthorCourseDto> getAuthorCourseInfo(long authorId);
+}
+
+
+@Query("select c from Course c where c.category=?1")
+Iterable<Course> findAllByCategory(String category);
+
+@Query("select c from Course c where c.category=:category and c.rating >:rating")
+Iterable<Course> findAllByCategoryAndRatingGreaterThan(@Param("category") String category, @Param("rating") int rating);
+
+@Query(value = "select * from COURSE where rating=?1", nativeQuery = true)
+Iterable<Course> findAllByRating(int rating);
+
+@Modifying
+@Transactional
+@Query("update Course c set c.rating=:rating where c.name=:name")
+int updateCourseRatingByName(@Param("rating") int rating, @Param("name") String name);
+
+
+
+
+
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof ReleaseNote)) return false;
+    ReleaseNote that = (ReleaseNote) o;
+    return Objects.equals(getVersion(), that.getVersion());
+}
+
+@Override
+public int hashCode() {
+    return Objects.hash(getVersion());
+}
+
+
+

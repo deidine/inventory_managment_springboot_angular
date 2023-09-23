@@ -1,0 +1,89 @@
+<!-- Header Toolbar -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+    
+<!-- Central Containt -->
+<div class="content-div">
+    
+    <!-- SideBar List -->
+    <sidenavbar></sidenavbar>
+    
+    <!-- Main Grid -->
+    <div mat-dialog-content>
+        {{deidine}}
+        <h5 style="text-align: left; margin-top: 5%"> Add New Product</h5>
+        <hr class="hr-silver">
+
+
+        <div style="width: 80%; margin-left: 10% ;">
+
+
+            <form [formGroup]="addProductForm" #myForm="ngForm" class="full-width"
+                (ngSubmit)="onSubmit(); myForm.reset()" style="margin-top: 2%">
+                <div class="form-group">
+
+                    <label> numero</label>
+                    <input required type="text" [class.is-invalid]="addProductForm.get('numero').invalid
+                                        && addProductForm.get('numero').touched"
+                        [class.is-valid]="addProductForm.get('numero').valid" formControlName="numero"
+                        class="form-control">
+
+                        <small class="text-danger" [class.d-none]="addProductForm.get('numero').valid
+                                              || addProductForm.get('numero').untouched">
+                        numero </small>
+                        
+                    </div>
+
+
+                    
+                    <div class="form-group">
+                        <label for="type">etage id</label>
+
+                        <select id="id_Etage" class="form-control" name="id_Etage" formControlName="id_Etage">
+                        <option disabled>select one</option>
+                        <option *ngFor="let etage of etageList " value="{{etage.id_etage}}">
+                            {{etage.numero}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">entite name</label>
+
+                    <select id="entiteId" class="form-control" name="entiteId" formControlName="entiteId">
+                        <option disabled>select one</option>
+                        <option *ngFor="let entite of entiteList " value="{{entite.entiteId}}">
+                            {{entite.entiteName}}
+                        </option>
+                    </select>
+                </div>
+                <button mat-raised-button type="submit" title="Add in Product List"
+                    style="width:30%; left:10%; margin-right: 20%; ">
+                    <mat-icon>add</mat-icon>
+                    ADD
+                </button>
+
+                <button mat-raised-button type="submit" title="Cancel" (click)="onClickCancel()"
+                    style="width:30%; left:10%; ">
+                    <mat-icon>cancel</mat-icon>
+                    Cancel
+                </button>
+
+            </form>
+        </div>
+
+        
+        
+        
+    </div>
+
+</div>
+    </header>
+</body>
+</html>

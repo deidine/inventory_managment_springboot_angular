@@ -6,3 +6,118 @@
         "ROLE_ADMIN"
     ]
 }
+
+[
+    {
+        "id": 1,
+        "buro": {
+            "id": 1,
+            "numero": 12,
+            "etage": {
+                "id_etage": 1,
+                "numero": 12
+            },
+            "entite": {
+                "entiteId": 1,
+                "entiteName": "hg",
+                "affectation": "qqqqq",
+                "type": "Cabinet",
+                "mougattaa": "Atar",
+                "wilayas": "Adrar"
+            }
+        },
+        "type": "wkwe",
+        "antivirus_active": "oui",
+        "reference": "12wq",
+        "systeme_active": "",
+        "modele": "weew",
+        "vendeur": "djdfhj",
+        "siOrdinateur": "wwe",
+        "anne_aquisition": "2023-09-15",
+        "etat": "En marche"
+    },
+    {
+        "id": 2,
+        "buro": {
+            "id": 1,
+            "numero": 12,
+            "etage": {
+                "id_etage": 1,
+                "numero": 12
+            },
+            "entite": {
+                "entiteId": 1,
+                "entiteName": "hg",
+                "affectation": "qqqqq",
+                "type": "Cabinet",
+                "mougattaa": "Atar",
+                "wilayas": "Adrar"
+            }
+        },
+        "type": "wss",
+        "antivirus_active": "oui",
+        "reference": "wsw",
+        "systeme_active": "Oui",
+        "modele": "wss",
+        "vendeur": "wjk",
+        "siOrdinateur": "sws",
+        "anne_aquisition": "2023-09-22",
+        "etat": "En marche"
+    },
+    {
+        "id": 3,
+        "buro": {
+            "id": 1,
+            "numero": 12,
+            "etage": {
+                "id_etage": 1,
+                "numero": 12
+            },
+            "entite": {
+                "entiteId": 1,
+                "entiteName": "hg",
+                "affectation": "qqqqq",
+                "type": "Cabinet",
+                "mougattaa": "Atar",
+                "wilayas": "Adrar"
+            }
+        },
+        "type": "hjhj",
+        "antivirus_active": "Oui",
+        "reference": "hjh",
+        "systeme_active": "Oui",
+        "modele": "jkjk",
+        "vendeur": "jjjk",
+        "siOrdinateur": "hj",
+        "anne_aquisition": "2023-09-22",
+        "etat": "En marche"
+    },
+    {
+        "id": 4,
+        "buro": {
+            "id": 1,
+            "numero": 12,
+            "etage": {
+                "id_etage": 1,
+                "numero": 12
+            },
+            "entite": {
+                "entiteId": 1,
+                "entiteName": "hg",
+                "affectation": "qqqqq",
+                "type": "Cabinet",
+                "mougattaa": "Atar",
+                "wilayas": "Adrar"
+            }
+        },
+        "type": "hjjh",
+        "antivirus_active": "Oui",
+        "reference": "hjhj",
+        "systeme_active": "Oui",
+        "modele": "jkjk",
+        "vendeur": "hj",
+        "siOrdinateur": "Windows",
+        "anne_aquisition": "2023-09-22",
+        "etat": "En marche"
+    }
+]

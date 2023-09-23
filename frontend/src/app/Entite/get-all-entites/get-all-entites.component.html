@@ -1,77 +1,120 @@
+
+<!-- Header Toolbar -->
+
+<header>
+  
+  <h1>Get All entites</h1>
+  
+  <hr>
+
+
+<!-- Central Containt -->
+<div class="content-div">
+
+  <!-- SideBar List -->
+  <div>
+
+    <sidenavbar></sidenavbar>
+
+  </div>
+
+  <!-- Main Grid -->
+
+  <div class='content-card'>
+
+
+
+
+    <div class="content-div">
+
+
+      <h5 style="text-align: left">entite List
+
+        <div *ngIf="addButton" style="float: right; position: unset; margin-top: 0%; 
+                  margin-right: 1%; ">
+          <button mat-raised-button (click)="onClickAddentite()" matTooltip=" Want to add a new entite ? "
+            title="right" aria-label="Button that displays a tooltip that can be programatically disabled">
+            <mat-icon>add</mat-icon>
+            Add entite
+          </button>
+
+        </div>
+
+      </h5>
+      <hr class="hr-silver">
+
  
-    <h1>Get All entites</h1>
-    
-<hr>
-    <table id="entite">
-        <tr>
-            <th (click)="sort('id')">
-                ID&nbsp;<span class="material-icons white">
-                    unfold_more
-                    </span>
-            </th>
+      <!-- Mat Table for retailer list  -->
 
-            <th (click)="sort('entiteName')">
-                entite Name&nbsp;<span class="material-icons white">
-                    unfold_more
-                    </span>
-            </th>
-            <th (click)="sort('entiteDescription')">
-                entite Description&nbsp;<span class="material-icons white">
-                    unfold_more
-                    </span>
-            </th>
-            <th (click)="sort('Category')">
-                Category&nbsp;<span class="material-icons white">
-                    unfold_more
-                    </span>
-            </th>
-            <th (click)="sort('units')">
-                Units&nbsp;<span class="material-icons white">
-                    unfold_more
-                    </span>
-            </th>
-            <th>
-                Update
-            </th>
-            <th>
-                Delete
-            </th>
-            
-        </tr>
-
-        <tr *ngFor = "let entite of entiteList ">
-            <td>
-                {{entite.entiteId}}
-            </td>
-            <td>
-                {{entite.entiteName}}
-            </td>
-            <td>
-                {{entite.affectation}}
-            </td>
-            <td>
-                {{entite.type}}
-            </td>
-            <td>
-                {{entite.mougattaa}}
-            </td>       
-            
-            <td>
-                <span class="material-icons edit" (click)="updateentite(entite)">
-                        border_color
-                    </span>
-            </td>    
-
-            <td>
-                <span class="material-icons delete" (click)="deleteentite(entite.entiteId)">
-                    delete
-                    </span>
-                
-            </td>    
+      <table #table style="max-height: 100px; overflow: auto;" mat-table [dataSource]="entiteList"
+        style="width: 96%; margin: 2%; margin-bottom: 2%" class="mat-elevation-z8" matSort>
 
 
-        </tr>
+        <ng-container matColumnDef="entiteId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.entiteId}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="entiteName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> entiteName</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.entiteName}} </mat-cell>
+        </ng-container>
 
 
-    </table>
-    
+        <ng-container matColumnDef="affectation">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> affectation</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.affectation}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> type</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+        </ng-container>
+      
+
+
+        <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Edit entite </mat-header-cell>
+          <mat-cell (click)=editentite(element.entiteId) style="cursor: pointer" title="Edit entite Details"
+            *matCellDef="let element">
+            <a>
+              <i class="material-icons">
+                border_color
+              </i>
+            </a>
+            <!-- &nbsp; delete entite -->
+          </mat-cell>
+
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          
+          <mat-header-cell *matHeaderCellDef mat-sort-header> delete entite </mat-header-cell>
+          <mat-cell (click)=deleteentite(element.entiteId) style="cursor: pointer" title="delete entite  "
+            *matCellDef="let element">
+            <a>
+              <mat-icon>delete</mat-icon>
+
+            </a>
+            <!-- &nbsp; delete entite -->
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </table>
+      <mat-paginator #paginator [pageIndex]="0" [pageSize]="10" [pageSizeOptions]=[5,10] showFirstLastButtons="true">
+
+      </mat-paginator>
+
+
+      <div style="margin-top: 2%"> &nbsp; </div>
+
+
+    </div>
+
+
+  </div>
+
+</div></header>
